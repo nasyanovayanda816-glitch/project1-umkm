@@ -1,6 +1,8 @@
 <?php ?>
 
 <?php include 'components/header.php'; ?>
+  <link rel="stylesheet" href="assets/css/index.css">
+</head>
 
 <body>
 
@@ -13,35 +15,58 @@
   <!-- =========================
         ABOUT SECTION
   ========================== -->
+  <section class="hero">
 
-  <section class="about-section">
+      <!-- HERO CONTENT -->
+    <div class="content">
 
-    <div class="about-container">
+      <h1>
+        Catering Lezat,<br>
+        Untuk Semua Acara
+      </h1>
 
-      <!-- LEFT -->
+      <p>
+        Nikmati layanan catering premium untuk acara keluarga,
+        pernikahan, ulang tahun, kantor, dan berbagai event spesial lainnya.
+      </p>
+
+      <div class="buttons">
+
+        <a href="#" class="btn btn-primary">
+          LIHAT MENU
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+        <a href="#" class="btn btn-outline">
+          HUBUNGI KAMI
+          <i class="fa-solid fa-phone"></i>
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="about-section" id="about"> <div class="about-container">
+
       <div class="about-content">
-
         <h2>
           Tentang Catering <br>
           Kami
         </h2>
-
         <p>
           Dengan pengalaman bertahun-tahun di bidang catering,
           kami menghadirkan hidangan berkualitas dengan bahan segar,
           pelayanan profesional, dan cita rasa terbaik untuk setiap acara Anda.
         </p>
-
       </div>
 
-      <!-- RIGHT -->
       <div class="about-image">
-
         <img
           src="https://images.unsplash.com/photo-1552566626-52f8b828add9?q=80&w=1974&auto=format&fit=crop"
           alt="Catering"
         >
-
       </div>
 
     </div>
