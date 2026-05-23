@@ -1,4 +1,7 @@
 <?php
+require_once '../config/koneksi.php';
+?>
+<?php
 session_start();
 // Panggil file koneksi
 require_once '../config/koneksi.php';

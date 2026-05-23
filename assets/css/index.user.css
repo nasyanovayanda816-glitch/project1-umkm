@@ -1,0 +1,414 @@
+/* =========================
+   TOP NAVBAR
+========================= */
+
+.top-navbar{
+    width: 100%;
+    height: 90px;
+    background: linear-gradient(90deg,#ff6b9d,#ff5f87);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 60px;
+    box-sizing: border-box;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.nav-logo{
+    color: white;
+    font-size: 42px;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+}
+
+.nav-menu{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    list-style: none;
+}
+
+.nav-menu li a{
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-menu li a:hover{
+    opacity: 0.7;
+}
+
+/* BIAR DASHBOARD GA NEMPEL */
+.dashboard{
+    margin-top: 25px;
+}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Poppins', sans-serif;
+  background:#ffdff0;
+  padding:20px;
+}
+
+.dashboard{
+  display:grid;
+  grid-template-columns:260px 1fr 320px;
+  gap:20px;
+  background:#ffeaf5;
+  border-radius:35px;
+  padding:20px;
+  min-height:100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+  background:linear-gradient(180deg,#ff8fc7,#ff69b4);
+  border-radius:30px;
+  padding:30px 20px;
+  color:white;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+.logo h2{
+  font-size:32px;
+  margin-bottom:40px;
+}
+
+.menu{
+  list-style:none;
+}
+
+.menu li{
+  padding:16px 18px;
+  border-radius:15px;
+  display:flex;
+  align-items:center;
+  gap:15px;
+  margin-bottom:10px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.menu li.active,
+.menu li:hover{
+  background:white;
+  color:#ff4fa0;
+}
+
+.upgrade-box{
+  background:rgba(255,255,255,0.2);
+  padding:20px;
+  border-radius:20px;
+}
+
+.upgrade-box h3{
+  font-size:14px;
+  line-height:1.6;
+  margin-bottom:20px;
+}
+
+.upgrade-box button{
+  width:100%;
+  border:none;
+  padding:12px;
+  border-radius:12px;
+  background:white;
+  color:#ff4fa0;
+  font-weight:600;
+  cursor:pointer;
+}
+
+/* MAIN */
+
+.main-content{
+  background:#fff7fb;
+  border-radius:30px;
+  padding:25px;
+}
+
+/* TOPBAR */
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:25px;
+}
+
+.topbar-right{
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+.search-box{
+  background:white;
+  border-radius:15px;
+  padding:12px 18px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  width:350px;
+}
+
+.search-box input{
+  border:none;
+  outline:none;
+  width:100%;
+  background:none;
+}
+
+.icons{
+  display:flex;
+  gap:12px;
+}
+
+.icons i{
+  width:42px;
+  height:42px;
+  background:#ffedf5;
+  border-radius:12px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#ff4fa0;
+  cursor:pointer;
+}
+
+.topbar img{
+  width:45px;
+  height:45px;
+  border-radius:50%;
+}
+
+/* BANNER */
+
+.banner{
+  position:relative;
+  height:180px;
+  border-radius:25px;
+  overflow:hidden;
+  margin-bottom:30px;
+}
+
+.banner img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.banner-content{
+  position:absolute;
+  right:30px;
+  top:30px;
+  color:white;
+  text-align:right;
+}
+
+.banner-content h2{
+  font-size:30px;
+  margin-bottom:10px;
+}
+
+/* SECTION */
+
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:20px;
+}
+
+.section-title a{
+  text-decoration:none;
+  color:#ff4fa0;
+}
+
+/* CATEGORY */
+
+.categories{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:15px;
+  margin-bottom:35px;
+}
+
+.category{
+  background:white;
+  padding:20px;
+  border-radius:20px;
+  text-align:center;
+  cursor:pointer;
+}
+
+.category i{
+  font-size:25px;
+  color:#ff4fa0;
+  margin-bottom:10px;
+}
+
+.category.active{
+  background:#ff4fa0;
+  color:white;
+}
+
+.category.active i{
+  color:white;
+}
+
+/* FOOD */
+
+.food-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.food-card{
+  background:white;
+  border-radius:25px;
+  overflow:hidden;
+}
+
+.food-image{
+  position:relative;
+  height:180px;
+}
+
+.food-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.discount{
+  position:absolute;
+  top:15px;
+  left:15px;
+  background:#ff4fa0;
+  color:white;
+  padding:6px 12px;
+  border-radius:10px;
+  font-size:12px;
+}
+
+.food-info{
+  padding:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.food-info button{
+  width:35px;
+  height:35px;
+  border:none;
+  border-radius:10px;
+  background:#ff4fa0;
+  color:white;
+  font-size:20px;
+  cursor:pointer;
+}
+
+/* RIGHTBAR */
+
+.rightbar{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.balance-card,
+.address-card,
+.order-card{
+  background:white;
+  border-radius:25px;
+  padding:25px;
+}
+
+.balance-card{
+  background:#ff4fa0;
+  color:white;
+}
+
+.balance-buttons{
+  display:flex;
+  gap:10px;
+  margin-top:20px;
+}
+
+.balance-buttons button{
+  flex:1;
+  border:none;
+  padding:10px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+.address-card button{
+  margin-top:15px;
+  width:100%;
+  border:none;
+  padding:12px;
+  border-radius:10px;
+  background:#ff4fa0;
+  color:white;
+}
+
+.order-item{
+  display:flex;
+  gap:12px;
+  margin:20px 0;
+}
+
+.order-item img{
+  width:65px;
+  height:65px;
+  border-radius:15px;
+  object-fit:cover;
+}
+
+.total{
+  display:flex;
+  justify-content:space-between;
+  margin:20px 0;
+}
+
+.checkout{
+  width:100%;
+  border:none;
+  padding:15px;
+  border-radius:15px;
+  background:#ff4fa0;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1200px){
+
+  .dashboard{
+    grid-template-columns:1fr;
+  }
+
+  .categories{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .food-grid{
+    grid-template-columns:1fr;
+  }
+
+}

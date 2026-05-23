@@ -22,23 +22,27 @@ if (isset($_POST['login'])) {
         
         if (password_verify($password, $row['password'])) {
             
-            $_SESSION['id_user'] = $row['id_user'];
-            $_SESSION['nama'] = $row['nama'];
-            $_SESSION['role'] = $row['role'];
+    $_SESSION['id_user'] = $row['id_user'];
+    $_SESSION['nama'] = $row['nama'];
+    $_SESSION['role'] = $row['role'];
 
-            // Baris 34-39: Sesuaikan arah folder admin dan index pelanggan
-            if ($row['role'] == 'admin') {
-                header("Location: ../admin/index.php"); 
-            } else {
-                header("Location: ../index.php"); 
-            }
-            exit();
-            
-        } else {
-            $error = "Password yang Anda masukkan salah!";
-        }
+    if ($row['role'] == 'admin') {
+
+        header("Location: ../admin/index.php");
+
     } else {
-        $error = "Email tidak ditemukan!";
+
+        header("Location: ../user/index.user.php");
+
+    }
+
+    exit();
+
+} else {
+
+    $error = "Password yang Anda masukkan salah!";
+
+}
     }
 }
 ?>
