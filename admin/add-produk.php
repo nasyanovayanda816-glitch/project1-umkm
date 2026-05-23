@@ -1,60 +1,150 @@
 <?php
+
+session_start();
+
 include 'config/koneksi.php';
 
-if(isset($_POST['submit'])){
-    $nama = $_POST['nama_produk'];
-    $harga = $_POST['harga'];
-    $stok = $_POST['stok'];
-    $kategori = $_POST['kategori'];
+$pageTitle = "Tambah Produk";
 
-    // Upload gambar
-    $foto = null;
-    if(isset($_FILES['foto']) && $_FILES['foto']['error'] == 0){
-        $ext = pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);
-        $foto = uniqid() . "." . $ext;
-        move_uploaded_file($_FILES['foto']['tmp_name'], "assets/img/".$foto);
+if(isset($_POST['submit'])){
+
+    $nama  = $_POST['nama_produk'];
+    $harga = $_POST['harga'];
+    $stok  = $_POST['stok'];
+
+    $foto = '';
+
+    if($_FILES['foto']['name']){
+
+        $foto = time() . '_' . $_FILES['foto']['name'];
+
+move_uploaded_file($_FILES['foto']['tmp_name'], 'assets/img/' . $foto);
+
     }
 
-    mysqli_query($conn,"INSERT INTO produk(nama_produk,harga,stok,kategori,foto,created_at)
-        VALUES('$nama','$harga','$stok','$kategori','$foto',NOW())");
-    header("Location: products.php");
+    mysqli_query($conn, "
+
+        INSERT INTO produk
+        (
+            nama_produk,
+            harga,
+            stok,
+            foto
+        )
+
+        VALUES
+        (
+            '$nama',
+            '$harga',
+            '$stok',
+            '$foto'
+        )
+
+    ");
+
+    header('Location: produk.php');
+    exit();
+
 }
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Tambah Produk</title>
+
+<!-- Bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<!-- CSS -->
+<link rel="stylesheet" href="assets/style.css">
+
 </head>
+
 <body>
-<div class="container mt-5">
-  <h2>Tambah Produk</h2>
-  <form method="post" enctype="multipart/form-data">
-    <div class="mb-3">
-      <label>Nama Produk</label>
-      <input type="text" name="nama_produk" class="form-control" required>
-    </div>
-    <div class="mb-3">
-      <label>Harga</label>
-      <input type="number" name="harga" class="form-control" required>
-    </div>
-    <div class="mb-3">
-      <label>Stok</label>
-      <input type="number" name="stok" class="form-control" required>
-    </div>
-    <div class="mb-3">
-      <label>Kategori</label>
-      <input type="text" name="kategori" class="form-control" required>
-    </div>
-    <div class="mb-3">
-      <label>Foto</label>
-      <input type="file" name="foto" class="form-control">
-    </div>
-    <button type="submit" name="submit" class="btn btn-success">Simpan</button>
-    <a href="products.php" class="btn btn-secondary">Kembali</a>
-  </form>
+
+<div class="wrapper">
+
+    <?php include 'includes/sidebar.php'; ?>
+
+    <main class="main">
+
+        <?php include 'includes/topbar.php'; ?>
+
+        <div class="add-produk-container">
+
+            <h2>Tambah Produk</h2>
+
+            <form method="POST" enctype="multipart/form-data">
+
+                <input
+                type="text"
+                name="nama_produk"
+                placeholder="Nama Produk"
+                required>
+
+                <input
+                type="number"
+                name="harga"
+                placeholder="Harga"
+                required>
+
+                <input
+                type="number"
+                name="stok"
+                placeholder="Stok"
+                required>
+
+                <input
+                type="file"
+                name="foto"
+                id="foto">
+
+                <img
+                id="preview"
+                class="preview-img"
+                style="display:none;">
+
+                <button type="submit" name="submit">
+                    Simpan Produk
+                </button>
+
+            </form>
+
+        </div>
+
+    </main>
+
 </div>
+
+<script>
+
+const foto = document.getElementById('foto');
+const preview = document.getElementById('preview');
+
+foto.addEventListener('change', function(){
+
+    const file = this.files[0];
+
+    if(file){
+
+        preview.src = URL.createObjectURL(file);
+        preview.style.display = 'block';
+
+    }
+
+});
+
+</script>
+
 </body>
 </html>
