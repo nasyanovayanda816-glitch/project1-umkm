@@ -1,105 +1,281 @@
+<?php
+include 'config/koneksi.php';
 
-<?php ?>
+$query = mysqli_query($conn, "SELECT * FROM produk ORDER BY id_produk DESC");
+?>
+<link rel="stylesheet" href="assets/css/catalog.css">
 
-<?php include 'components/header.php'; ?>
-  <link rel="stylesheet" href="assets/css/catalog.css">
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Catalog Produk</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link rel="stylesheet" href="../assets/css/catalog.css">
+
 </head>
 
 <body>
 
-  <!-- =========================
-        HERO SECTION
-  ========================== -->
+<!-- NAVBAR -->
 
-  <?php include 'components/navbar.php'; ?>
+<nav class="navbar">
 
+    <div class="logo">FlavorVibe.</div>
 
+    <div class="nav-menu">
+        <a href="#">Beranda</a>
+        <a href="#">Menu</a>
+        <a href="#">Galeri</a>
+        <a href="#">Promo</a>
+        <a href="#">Blog</a>
+        <a href="#">Tentang Kami</a>
+        <a href="#">Pesan Meja</a>
+    </div>
 
-  <?php include 'components/footer.php'; ?>
+</nav>
 
+<!-- HEADER -->
 
-<main class="content-container">
-        
-        <header class="section-header">
-            <div class="header-left">
-                <h1 class="main-title">Hidangan Unggulan</h1>
-                <p class="subtitle">Cicipi hidangan paling populer kami, disiapkan dengan cermat untuk kepuasan Anda.</p>
+<section class="header">
+
+    <div class="breadcrumb">
+        <i class="fa-solid fa-house"></i> Beranda > Produk
+    </div>
+
+    <h1 class="title">Produk</h1>
+
+    <p class="subtitle">
+        Jelajahi koleksi produk berkualitas tinggi kami yang dikurasi
+        dengan cermat untuk memenuhi kebutuhan Anda.
+    </p>
+
+</section>
+
+<!-- SEARCH -->
+
+<section class="search-wrapper">
+
+    <div class="search-box">
+
+        <div class="search-left">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Cari produk...">
+        </div>
+
+        <div class="search-right">
+
+            <button class="filter-btn">
+                <i class="fa-solid fa-grip"></i>
+            </button>
+
+            <select class="sort">
+                <option>Terbaru</option>
+                <option>Termurah</option>
+                <option>Termahal</option>
+            </select>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CONTENT -->
+
+<section class="content">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="filter-header">
+            <h3>Filter</h3>
+            <a href="#" class="reset">Hapus Semua</a>
+        </div>
+
+        <div class="category">
+
+            <h4>Kategori</h4>
+
+            <div class="check-group">
+
+                <label class="check-item">
+                    <input type="checkbox">
+                    Snack
+                    <span class="badge">4</span>
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox">
+                    Catering
+                    <span class="badge">6</span>
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox">
+                    Makanan Basah
+                    <span class="badge">3</span>
+                </label>
+
             </div>
-            <div class="header-arrows">
-                <button class="arrow-btn btn-prev">&#8592;</button>
-                <button class="arrow-btn btn-next">&#8594;</button>
+
+        </div>
+
+    </aside>
+
+    <!-- PRODUK -->
+
+    <div class="products">
+
+        <div class="product-grid">
+
+            <?php while($produk = mysqli_fetch_assoc($query)) : ?>
+
+            <div class="card">
+
+                <div class="card-image">
+
+                    <img src="../admin/assets/img/<?php echo $produk['foto']; ?>">
+
+                    <div class="quick-view">
+                        Tampilan Cepat
+                    </div>
+
+                </div>
+
+                <div class="card-body">
+
+                    <div class="category-text">
+                        <?php echo $produk['kategori']; ?>
+                    </div>
+
+                    <h2 class="product-title">
+                        <?php echo $produk['nama_produk']; ?>
+                    </h2>
+
+                    <p class="desc">
+                        <?php echo $produk['deskripsi']; ?>
+                    </p>
+
+                    <div class="rating">
+                        ⭐⭐⭐⭐⭐ (4.9)
+                    </div>
+
+                    <div class="price">
+                        Rp <?php echo number_format($produk['harga'],0,',','.'); ?>
+                    </div>
+
+                    <button class="detail-btn">
+                        <i class="fa-regular fa-eye"></i>
+                        Lihat Rincian
+                    </button>
+
+                </div>
+
             </div>
-        </header>
 
-        <section class="menu-grid">
-            
-            <article class="menu-card">
-                <div class="card-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=500&auto=format&fit=crop&q=80" alt="Steak Wagyu Signature">
-                </div>
-                <div class="card-content">
-                    <div class="price-container">
-                        <span class="current-price">Rp 299.000</span>
-                        <span class="old-price">Rp 350.000</span>
-                    </div>
-                    <h3 class="item-title">Steak Wagyu Signature</h3>
-                    <p class="item-description">Steak wagyu premium dipanggang sempurna</p>
-                </div>
-            </article>
+            <?php endwhile; ?>
 
-            <article class="menu-card">
-                <div class="card-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&auto=format&fit=crop&q=80" alt="Paket Keluarga Lengkap">
-                </div>
-                <div class="card-content">
-                    <div class="price-container">
-                        <span class="current-price">Rp 189.000</span>
-                        <span class="old-price">Rp 220.000</span>
-                    </div>
-                    <h3 class="item-title">Paket Keluarga Lengkap</h3>
-                    <p class="item-description">Paket makan sempurna untuk seluruh keluarga</p>
-                </div>
-            </article>
+        </div>
 
-            <article class="menu-card">
-                <div class="card-image-wrapper show-overlay">
-                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&auto=format&fit=crop&q=80" alt="Paket Caramel Latte">
-                    <div class="quick-view-overlay">
-                        <span class="quick-view-btn">Tampilan Cepat</span>
-                    </div>
-                </div>
-                <div class="card-content">
-                    <div class="price-container">
-                        <span class="current-price">Rp 79.000</span>
-                        <span class="old-price">Rp 95.000</span>
-                    </div>
-                    <h3 class="item-title">Paket Caramel Latte &...</h3>
-                    <p class="item-description">Pasangan dessert sempurna untuk pecinta kopi</p>
-                </div>
-            </article>
+        <!-- PAGINATION -->
 
-            <article class="menu-card">
-                <div class="card-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?w=500&auto=format&fit=crop&q=80" alt="Smoothie Tropis Segar">
-                </div>
-                <div class="card-content">
-                    <div class="price-container">
-                        <span class="current-price">Rp 39.000</span>
-                        <span class="old-price">Rp 45.000</span>
-                    </div>
-                    <h3 class="item-title">Smoothie Tropis Segar</h3>
-                    <p class="item-description">Smoothie sehat dari buah tropis segar</p>
-                </div>
-            </article>
+        <div class="pagination">
 
-        </section>
+            <div class="page">
+                <i class="fa-solid fa-chevron-left"></i>
+            </div>
 
-        <footer class="action-footer">
-            <a href="#" class="btn-more">Lihat Hidangan Lainnya &rarr;</a>
-        </footer>
+            <div class="page active">1</div>
 
-    </main>
+            <div class="page">2</div>
+
+            <div class="page">
+                <i class="fa-solid fa-chevron-right"></i>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div>
+
+            <div class="footer-logo">FlavorVibe.</div>
+
+            <p>
+                Mitra terpercaya Anda dalam menemukan produk
+                sempurna dengan tema FnB modern.
+            </p>
+
+            <div class="socials">
+
+                <div><i class="fa-brands fa-facebook-f"></i></div>
+                <div><i class="fa-brands fa-instagram"></i></div>
+                <div><i class="fa-brands fa-twitter"></i></div>
+
+            </div>
+
+        </div>
+
+        <div>
+
+            <h3 class="footer-title">Informasi Kontak</h3>
+
+            <div class="contact-item">
+                📍 Sunrise Building, Jakarta
+            </div>
+
+            <div class="contact-item">
+                📞 +62 812-3456-7890
+            </div>
+
+            <div class="contact-item">
+                ✉ support@flavorvibe.com
+            </div>
+
+        </div>
+
+        <div>
+
+            <h3 class="footer-title">Langganan</h3>
+
+            <p>
+                Dapatkan pembaruan terbaru dan promo spesial.
+            </p>
+
+            <div class="subscribe">
+
+                <input type="text" placeholder="Masukkan email Anda">
+
+                <button>
+                    Langganan
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
 
 </body>
 </html>
-
