@@ -39,141 +39,169 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 <?php $pageTitle = "Produk"; ?>
 <?php include 'includes/topbar.php'; ?>
 
-<div class="table-card">
+<div class="table-card produk-card">
 
     <div class="table-header">
 
-        <h5>Data Produk</h5>
+        <div>
+            <h3 class="produk-heading">
+                Data Produk
+            </h3>
 
-        <a href="add-produk.php" class="btn btn-primary">
+            <p class="produk-subtitle">
+                Kelola semua produk snack & catering
+            </p>
+        </div>
+
+        <a href="add-produk.php" class="btn-tambah-produk">
+
             <i class="fa fa-plus"></i>
             Tambah Produk
+
         </a>
 
     </div>
 
-    <table class="table align-middle produk-table">
+    <div class="table-responsive">
 
-       <thead>
+        <table class="table produk-table">
 
-<tr>
+            <thead>
 
-    <th>No</th>
-    <th>Foto</th>
-    <th>Produk</th>
-    <th>Harga</th>
-    <th>Kategori</th>
-    <th>Stok</th>
-    <th width="120">Aksi</th>
+            <tr>
 
-</tr>
+            <th>No</th>
+            <th>Foto</th>
+            <th>Nama Produk</th>
+            <th>Harga</th>
+            <th>Kategori</th>
+            <th>Stok</th>
+            <th>Deskripsi</th>
+            <th>Aksi</th>
+
+            </tr>
 
 </thead>
 
-<tbody>
+            <tbody>
 
-<?php $no = 1; ?>
+            <?php $no = 1; ?>
 
-<?php while($row = mysqli_fetch_assoc($data)) : ?>
+            <?php while($row = mysqli_fetch_assoc($data)) : ?>
 
-<tr>
+                <tr>
 
-    <!-- NO -->
-    <td>
-        <?= $no++; ?>
-    </td>
+                    <!-- NO -->
+                    <td>
+                        <?= $no++; ?>
+                    </td>
 
-    <!-- FOTO -->
-    <td>
+                    <!-- FOTO -->
+                    <td>
 
-    <?php if($row['foto']) : ?>
+                    <?php if($row['foto']) : ?>
 
-        <img
-        src="assets/img/<?= $row['foto']; ?>"
-        class="produk-img">
+                        <img
+                        src="assets/img/<?= $row['foto']; ?>"
+                        class="produk-img">
 
-    <?php endif; ?>
+                    <?php endif; ?>
 
-    </td>
+                    </td>
 
-    <!-- PRODUK + DESKRIPSI -->
-    <td>
+                <!-- NAMA PRODUK -->
+                <td>
 
-        <strong class="produk-title">
-            <?= $row['nama_produk']; ?>
-        </strong>
+                <div class="produk-title">
+                <?= $row['nama_produk']; ?>
+                </div>
 
-        <div class="produk-deskripsi">
+                </td>
 
-            <?= $row['deskripsi']; ?>
+                    <!-- HARGA -->
+                    <td>
 
-        </div>
+                        <strong class="harga-text">
 
-    </td>
+                            Rp <?= number_format($row['harga']); ?>
 
-    <!-- HARGA -->
-    <td>
+                        </strong>
 
-        <strong>
-            Rp <?= number_format($row['harga']); ?>
-        </strong>
+                    </td>
 
-    </td>
+                    <!-- KATEGORI -->
+                    <td>
 
-    <!-- KATEGORI -->
-    <td>
+                    <?php if($row['kategori'] == 'Snack') : ?>
 
-    <?php if($row['kategori'] == 'Snack') : ?>
+                        <span class="badge-snack">
+                            Snack
+                        </span>
 
-        <span class="badge bg-warning text-dark">
-            Snack
-        </span>
+                    <?php else : ?>
 
-    <?php else : ?>
+                        <span class="badge-catering">
+                            Catering
+                        </span>
 
-        <span class="badge bg-success">
-            Catering
-        </span>
+                    <?php endif; ?>
 
-    <?php endif; ?>
+                    </td>
 
-    </td>
+                    <!-- STOK -->
+                    <td>
 
-    <!-- STOK -->
-    <td>
+                        <span class="stok-box">
 
-        <?= $row['stok']; ?>
+                            <?= $row['stok']; ?>
 
-    </td>
+                        </span>
 
-    <!-- AKSI -->
-    <td>
+                    </td>
+                    <!-- DESKRIPSI -->
+                    <td>
 
-        <div class="aksi-produk">
+                    <div class="produk-deskripsi">
 
-            <a
-            href="edit-produk.php?id=<?= $row['id_produk']; ?>"
-            class="btn-edit-mini">
+                    <?= $row['deskripsi']; ?>
 
-                <i class="fa fa-pen"></i>
+                    </div>
 
-            </a>
+                    </td>
+                    <!-- AKSI -->
+                    <td>
 
-            <a
-            href="delete-produk.php?id=<?= $row['id_produk']; ?>"
-            class="btn-delete-mini"
-            onclick="return confirm('Hapus produk ini?')">
+                        <div class="aksi-produk">
 
-                <i class="fa fa-trash"></i>
+                            <a
+                            href="edit-produk.php?id=<?= $row['id_produk']; ?>"
+                            class="btn-edit-mini">
 
-            </a>
+                                <i class="fa fa-pen"></i>
 
-        </div>
+                            </a>
 
-    </td>
+                            <a
+                            href="delete-produk.php?id=<?= $row['id_produk']; ?>"
+                            class="btn-delete-mini"
+                            onclick="return confirm('Hapus produk ini?')">
 
-</tr>
+                                <i class="fa fa-trash"></i>
 
-<?php endwhile; ?>
+                            </a>
 
-</tbody>
+                        </div>
+
+                    </td>
+
+                </tr>
+
+            <?php endwhile; ?>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>

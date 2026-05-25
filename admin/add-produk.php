@@ -8,10 +8,11 @@ $pageTitle = "Tambah Produk";
 
 if(isset($_POST['submit'])){
 
-    $nama      = $_POST['nama_produk'];
-    $harga     = $_POST['harga'];
-    $stok      = $_POST['stok'];
-    $kategori  = $_POST['kategori'];
+    $nama       = $_POST['nama_produk'];
+    $harga      = $_POST['harga'];
+    $stok       = $_POST['stok'];
+    $kategori   = $_POST['kategori'];
+    $deskripsi  = $_POST['deskripsi'];
 
     $foto = '';
 
@@ -27,8 +28,8 @@ if(isset($_POST['submit'])){
 
     }
 
-    // Insert Database
-    mysqli_query($conn, "
+    // INSERT DATABASE
+    $query = mysqli_query($conn, "
 
         INSERT INTO produk
         (
@@ -36,6 +37,7 @@ if(isset($_POST['submit'])){
             harga,
             stok,
             kategori,
+            deskripsi,
             foto
         )
 
@@ -45,10 +47,18 @@ if(isset($_POST['submit'])){
             '$harga',
             '$stok',
             '$kategori',
+            '$deskripsi',
             '$foto'
         )
 
     ");
+
+    // CEK ERROR
+    if(!$query){
+
+        die(mysqli_error($conn));
+
+    }
 
     header('Location: produk.php');
     exit();
@@ -117,11 +127,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
                 <!-- KATEGORI -->
                 <select name="kategori" required>
-                <textarea
-                name="deskripsi"
-                placeholder="Deskripsi Produk"
-                rows="4"
-                required></textarea>
+
                     <option value="">
                         -- Pilih Kategori --
                     </option>
@@ -135,6 +141,13 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
                     </option>
 
                 </select>
+
+                <!-- DESKRIPSI -->
+                <textarea
+                name="deskripsi"
+                placeholder="Deskripsi Produk"
+                rows="4"
+                required></textarea>
 
                 <!-- FOTO -->
                 <input

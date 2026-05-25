@@ -15,24 +15,28 @@ $produk = mysqli_fetch_assoc($query);
 
 if(isset($_POST['update'])){
 
-    $nama  = $_POST['nama_produk'];
-    $harga = $_POST['harga'];
-    $stok  = $_POST['stok'];
+    $nama       = $_POST['nama_produk'];
+    $harga      = $_POST['harga'];
+    $stok       = $_POST['stok'];
+    $kategori   = $_POST['kategori'];
+    $deskripsi  = $_POST['deskripsi'];
 
     $fotoLama = $produk['foto'];
     $fotoBaru = $fotoLama;
 
-    // upload foto baru
+    // Upload Foto Baru
     if($_FILES['foto']['name']){
 
         $fotoBaru = time() . '_' . $_FILES['foto']['name'];
 
         move_uploaded_file(
             $_FILES['foto']['tmp_name'],
-            '../assets/img/' . $fotoBaru
+            'assets/img/' . $fotoBaru
         );
+
     }
 
+    // UPDATE DATABASE
     mysqli_query($conn, "
 
         UPDATE produk SET
@@ -40,6 +44,8 @@ if(isset($_POST['update'])){
         nama_produk = '$nama',
         harga = '$harga',
         stok = '$stok',
+        kategori = '$kategori',
+        deskripsi = '$deskripsi',
         foto = '$fotoBaru'
 
         WHERE id_produk='$id'
@@ -47,10 +53,9 @@ if(isset($_POST['update'])){
     ");
 
     header('Location: produk.php');
+    exit();
 
 }
-
-$page = "produk.php";
 
 ?>
 
@@ -100,6 +105,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     <!-- LEFT -->
     <div>
 
+        <!-- NAMA -->
         <div class="input-group-modern">
 
             <label>Nama Produk</label>
@@ -112,6 +118,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
         </div>
 
+        <!-- HARGA -->
         <div class="input-group-modern">
 
             <label>Harga Produk</label>
@@ -124,6 +131,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
         </div>
 
+        <!-- STOK -->
         <div class="input-group-modern">
 
             <label>Stok Produk</label>
@@ -136,6 +144,48 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
         </div>
 
+        <!-- KATEGORI -->
+        <div class="input-group-modern">
+
+            <label>Kategori</label>
+
+            <select
+            name="kategori"
+            class="form-control modern-select"
+            required>
+
+                <option value="Snack"
+                <?= ($produk['kategori'] == 'Snack') ? 'selected' : ''; ?>>
+
+                    Snack
+
+                </option>
+
+                <option value="Catering"
+                <?= ($produk['kategori'] == 'Catering') ? 'selected' : ''; ?>>
+
+                    Catering
+
+                </option>
+
+            </select>
+
+        </div>
+
+        <!-- DESKRIPSI -->
+        <div class="input-group-modern">
+
+            <label>Deskripsi Produk</label>
+
+            <textarea
+            name="deskripsi"
+            rows="5"
+            class="modern-textarea"
+            required><?= $produk['deskripsi']; ?></textarea>
+
+        </div>
+
+        <!-- FOTO -->
         <div class="input-group-modern">
 
             <label>Ganti Foto</label>
@@ -147,6 +197,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
         </div>
 
+        <!-- BUTTON -->
         <button
         type="submit"
         name="update"
