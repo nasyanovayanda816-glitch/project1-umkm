@@ -3,10 +3,10 @@ include 'config/koneksi.php';
 
 $query = mysqli_query($conn, "SELECT * FROM produk ORDER BY id_produk DESC");
 ?>
-<link rel="stylesheet" href="assets/css/catalog.css">
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
 
 <meta charset="UTF-8">
@@ -20,29 +20,15 @@ $query = mysqli_query($conn, "SELECT * FROM produk ORDER BY id_produk DESC");
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-<link rel="stylesheet" href="../assets/css/catalog.css">
+<link rel="stylesheet" href="assets/css/catalog.css">
 
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-
-<nav class="navbar">
-
-    <div class="logo">FlavorVibe.</div>
-
-    <div class="nav-menu">
-        <a href="#">Beranda</a>
-        <a href="#">Menu</a>
-        <a href="#">Galeri</a>
-        <a href="#">Promo</a>
-        <a href="#">Blog</a>
-        <a href="#">Tentang Kami</a>
-        <a href="#">Pesan Meja</a>
-    </div>
-
-</nav>
+<!-- HEADER COMPONENT -->
+<?php include 'components/header.php'; ?>
+<?php include 'components/navbar.php'; ?>
 
 <!-- HEADER -->
 
@@ -188,24 +174,6 @@ $query = mysqli_query($conn, "SELECT * FROM produk ORDER BY id_produk DESC");
 
         </div>
 
-        <!-- PAGINATION -->
-
-        <div class="pagination">
-
-            <div class="page">
-                <i class="fa-solid fa-chevron-left"></i>
-            </div>
-
-            <div class="page active">1</div>
-
-            <div class="page">2</div>
-
-            <div class="page">
-                <i class="fa-solid fa-chevron-right"></i>
-            </div>
-
-        </div>
-
     </div>
 
 </section>
@@ -224,52 +192,6 @@ $query = mysqli_query($conn, "SELECT * FROM produk ORDER BY id_produk DESC");
                 Mitra terpercaya Anda dalam menemukan produk
                 sempurna dengan tema FnB modern.
             </p>
-
-            <div class="socials">
-
-                <div><i class="fa-brands fa-facebook-f"></i></div>
-                <div><i class="fa-brands fa-instagram"></i></div>
-                <div><i class="fa-brands fa-twitter"></i></div>
-
-            </div>
-
-        </div>
-
-        <div>
-
-            <h3 class="footer-title">Informasi Kontak</h3>
-
-            <div class="contact-item">
-                📍 Sunrise Building, Jakarta
-            </div>
-
-            <div class="contact-item">
-                📞 +62 812-3456-7890
-            </div>
-
-            <div class="contact-item">
-                ✉ support@flavorvibe.com
-            </div>
-
-        </div>
-
-        <div>
-
-            <h3 class="footer-title">Langganan</h3>
-
-            <p>
-                Dapatkan pembaruan terbaru dan promo spesial.
-            </p>
-
-            <div class="subscribe">
-
-                <input type="text" placeholder="Masukkan email Anda">
-
-                <button>
-                    Langganan
-                </button>
-
-            </div>
 
         </div>
 
