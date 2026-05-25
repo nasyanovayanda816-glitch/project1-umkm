@@ -74,7 +74,7 @@ $queryProduk = mysqli_query($conn, $query);
 
     <ul class="nav-menu">
 
-        <li><a href="index.user.php">Produk</a></li>
+        
         <li><a href="../index.php">Beranda</a></li>
         <li><a href="../catalog.php">Catalog</a></li>
         <li><a href="#">Tentang Kami</a></li>

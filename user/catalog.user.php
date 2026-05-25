@@ -94,7 +94,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         <div class="topbar">
 
             <div>
-                <h1>Halo, <?= $nama; ?> 👋</h1>
+                <h1>Halo, <?= $nama; ?></h1>
                 <p>Temukan menu terbaik favoritmu</p>
             </div>
 

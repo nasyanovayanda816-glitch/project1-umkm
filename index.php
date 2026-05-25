@@ -1,7 +1,8 @@
 <?php ?>
 
 <?php include 'components/header.php'; ?>
-  <link rel="stylesheet" href="assets/css/index.css">
+<link rel="stylesheet" href="assets/css/navbar.css"> 
+<link rel="stylesheet" href="assets/css/index.css">
 </head>
 
 <body>
@@ -32,7 +33,7 @@
 
       <div class="buttons">
 
-        <a href="#" class="btn btn-primary">
+        <a href="catalog.php" class="btn btn-primary">
           LIHAT MENU
           <i class="fa-solid fa-arrow-right"></i>
         </a>
@@ -274,7 +275,7 @@
     <!-- BUTTON -->
     <div class="menu-button">
 
-      <a href="#">
+      <a href="catalog.php">
         Lihat Menu Lainnya
         <i class="fa-solid fa-arrow-right"></i>
       </a>
