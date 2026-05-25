@@ -1,6 +1,6 @@
 <?php 
 session_start();
-
+global $conn;
 if (!isset($_SESSION['id_user'])) {
     header("Location: ../auth/login.php");
     exit();

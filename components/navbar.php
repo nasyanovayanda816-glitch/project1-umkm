@@ -10,15 +10,15 @@ if (session_status() === PHP_SESSION_NONE) {
 <nav class="navbar">
 
   <div class="logo">
-    FlavorVibe<span>.</span>
+    FlavorVibe<span>.</span>a
   </div>
 
   <ul class="nav-links">
 
     <li><a href="index.php">Beranda</a></li>
-    <li><a href="user/pesanan.php">Catalog</a></li>
+    <li><a href="#catalog">Catalog</a></li>
     <li><a href="index.php#about">Tentang Kami</a></li>
-  
+    
     
     <?php if (isset($_SESSION['id_user'])) : ?>
         <li><a href="auth/logout.php" style="color: #c62828; font-weight: 700;">Logout</a></li>
