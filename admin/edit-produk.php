@@ -1,61 +1,204 @@
 <?php
 
+session_start();
+
 include 'config/koneksi.php';
 
 $id = $_GET['id'];
 
-$data = mysqli_query(
-    $conn,
-    "SELECT * FROM produk WHERE id_produk='$id'"
-);
+$query = mysqli_query($conn, "
+    SELECT * FROM produk
+    WHERE id_produk='$id'
+");
 
-$row = mysqli_fetch_assoc($data);
+$produk = mysqli_fetch_assoc($query);
 
-if(isset($_POST['submit'])){
+if(isset($_POST['update'])){
 
-    $nama = $_POST['nama_produk'];
+    $nama  = $_POST['nama_produk'];
     $harga = $_POST['harga'];
-    $stok = $_POST['stok'];
+    $stok  = $_POST['stok'];
+
+    $fotoLama = $produk['foto'];
+    $fotoBaru = $fotoLama;
+
+    // upload foto baru
+    if($_FILES['foto']['name']){
+
+        $fotoBaru = time() . '_' . $_FILES['foto']['name'];
+
+        move_uploaded_file(
+            $_FILES['foto']['tmp_name'],
+            '../assets/img/' . $fotoBaru
+        );
+    }
 
     mysqli_query($conn, "
 
-        UPDATE produk
+        UPDATE produk SET
 
-        SET
-
-        nama_produk='$nama',
-        harga='$harga',
-        stok='$stok'
+        nama_produk = '$nama',
+        harga = '$harga',
+        stok = '$stok',
+        foto = '$fotoBaru'
 
         WHERE id_produk='$id'
 
     ");
 
-    header('Location: products.php');
+    header('Location: produk.php');
 
 }
 
+$page = "produk.php";
+
 ?>
 
-<form method="POST">
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-<input
-type="text"
-name="nama_produk"
-value="<?= $row['nama_produk']; ?>">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<input
-type="number"
-name="harga"
-value="<?= $row['harga']; ?>">
+<title>Edit Produk</title>
 
-<input
-type="number"
-name="stok"
-value="<?= $row['stok']; ?>">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<button type="submit" name="submit">
-Update
-</button>
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="assets/style.css">
+
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<?php include 'includes/sidebar.php'; ?>
+
+<main class="main">
+
+<!-- TOPBAR -->
+<div class="topbar">
+
+    <div>
+        <h2>Edit Produk</h2>
+        <p>Update produk kamu ✨</p>
+    </div>
+
+</div>
+
+<!-- CARD -->
+<div class="modern-edit-card">
+
+<form method="POST" enctype="multipart/form-data">
+
+<div class="edit-grid">
+
+    <!-- LEFT -->
+    <div>
+
+        <div class="input-group-modern">
+
+            <label>Nama Produk</label>
+
+            <input
+            type="text"
+            name="nama_produk"
+            value="<?= $produk['nama_produk']; ?>"
+            required>
+
+        </div>
+
+        <div class="input-group-modern">
+
+            <label>Harga Produk</label>
+
+            <input
+            type="number"
+            name="harga"
+            value="<?= $produk['harga']; ?>"
+            required>
+
+        </div>
+
+        <div class="input-group-modern">
+
+            <label>Stok Produk</label>
+
+            <input
+            type="number"
+            name="stok"
+            value="<?= $produk['stok']; ?>"
+            required>
+
+        </div>
+
+        <div class="input-group-modern">
+
+            <label>Ganti Foto</label>
+
+            <input
+            type="file"
+            name="foto"
+            id="foto">
+
+        </div>
+
+        <button
+        type="submit"
+        name="update"
+        class="btn-modern-save">
+
+            <i class="fa fa-floppy-disk"></i>
+            Simpan Perubahan
+
+        </button>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="preview-area">
+
+        <h5>Preview Produk</h5>
+
+        <img
+        src="../assets/img/<?= $produk['foto']; ?>"
+        id="preview"
+        class="preview-modern">
+
+    </div>
+
+</div>
 
 </form>
+
+</div>
+
+</main>
+
+</div>
+
+<script>
+
+const foto = document.getElementById('foto');
+const preview = document.getElementById('preview');
+
+foto.addEventListener('change', function(){
+
+    const file = this.files[0];
+
+    if(file){
+
+        preview.src = URL.createObjectURL(file);
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
