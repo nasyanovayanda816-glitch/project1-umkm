@@ -16,7 +16,6 @@ if (session_status() === PHP_SESSION_NONE) {
     <li><a href="index.php">Beranda</a></li>
     <li><a href="catalog.php">Catalog</a></li>
     <li><a href="index.php#about">Tentang Kami</a></li>
-    <li><a href="index.user.php#about">User</a></li>
     
     <?php if (isset($_SESSION['id_user'])) : ?>
         <li><a href="auth/logout.php" style="color: #c62828; font-weight: 700;">Logout</a></li>

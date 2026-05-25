@@ -6,41 +6,43 @@ if (!isset($_SESSION['id_user'])) {
     exit();
 }
 
+include '../config/koneksi.php';
+
 $nama = $_SESSION['nama'];
+
+/* QUERY PRODUK */
+$queryProduk = mysqli_query($conn, "
+    SELECT * FROM produk 
+    ORDER BY id_produk DESC
+");
 ?>
 
-  <link rel="stylesheet" href="assets/css/index.user.css">
 <!DOCTYPE html>
 <html lang="id">
 
 <head>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Dashboard UMKM Catering</title>
+    <title>Dashboard Customer</title>
 
-  <!-- GOOGLE FONT -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- FONT AWESOME -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-  >
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="../assets/css/index.user.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/index.user.css">
 
 </head>
 
 <body>
-    <!-- NAVBAR TOP -->
+
+<!-- NAVBAR -->
 <nav class="top-navbar">
 
     <div class="nav-logo">
@@ -50,403 +52,218 @@ $nama = $_SESSION['nama'];
     <ul class="nav-menu">
 
         <li><a href="#">Beranda</a></li>
-        <li><a href="#">Catalog</a></li>
+        <li><a href="catalog.php">Catalog</a></li>
         <li><a href="#">Tentang Kami</a></li>
-        <li><a href="../auth/login.php">Login</a></li>
+        <li><a href="../auth/logout.php">Logout</a></li>
 
     </ul>
 
 </nav>
 
-
 <div class="dashboard">
 
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
 
-    <div class="logo">
-      <h2>JajananGenz.</h2>
-    </div>
+        <div class="logo">
+            <h2>JajananGenz.</h2>
+        </div>
 
-    <ul class="menu">
+        <ul class="menu">
 
-      <li class="active">
-        <i class="fa-solid fa-house"></i>
-        Dashboard
-      </li>
+            <li class="active">
+                <a href="index.user.php">
+                    <i class="fa-solid fa-house"></i>
+                    Dashboard
+                </a>
+            </li>
 
-      <li>
-        <i class="fa-solid fa-bag-shopping"></i>
-        Pesanan
-      </li>
+            <li>
+                <a href="pesanan.php">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    Pesanan
+                </a>
+            </li>
 
-      <li>
-        <i class="fa-solid fa-heart"></i>
-        Favorit
-      </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-heart"></i>
+                    Favorit
+                </a>
+            </li>
 
-      <li>
-        <i class="fa-solid fa-message"></i>
-        Chat Pelanggan
-      </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-message"></i>
+                    Chat
+                </a>
+            </li>
 
-      <li>
-        <i class="fa-solid fa-clock-rotate-left"></i>
-        Riwayat
-      </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    Riwayat
+                </a>
+            </li>
 
-      <li>
-        <i class="fa-solid fa-wallet"></i>
-        Pembayaran
-      </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-wallet"></i>
+                    Pembayaran
+                </a>
+            </li>
 
-      <li>
-        <i class="fa-solid fa-gear"></i>
-        Pengaturan
-      </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-gear"></i>
+                    Pengaturan
+                </a>
+            </li>
 
-    </ul>
+        </ul>
 
-    <!-- PROMO -->
-    <div class="upgrade-box">
+    </aside>
 
-      <h3>
-        Upgrade akun kamu <br>
-        dan dapat voucher catering gratis 🎉
-      </h3>
+    <!-- MAIN -->
+    <main class="main-content">
 
-      <button>Upgrade Sekarang</button>
+        <!-- TOPBAR -->
+        <div class="topbar">
 
-    </div>
+            <div>
+                <h2>Halo, <?= $nama; ?> 👋</h2>
+            </div>
 
-  </aside>
+            <div class="topbar-right">
 
-  <!-- MAIN -->
-  <main class="main-content">
+                <div class="search-box">
 
-    <!-- TOPBAR -->
-    <div class="topbar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
 
-      <div>
-        <h2>Halo, <?php echo $nama; ?> 👋</h2>
-      </div>
+                    <input type="text" placeholder="Cari menu catering...">
 
-      <div class="topbar-right">
+                </div>
 
-        <div class="search-box">
+                <div class="icons">
 
-          <i class="fa-solid fa-magnifying-glass"></i>
+                    <i class="fa-regular fa-bell"></i>
+                    <i class="fa-regular fa-envelope"></i>
+                    <i class="fa-regular fa-heart"></i>
 
-          <input
-            type="text"
-            placeholder="Cari menu catering..."
-          >
+                </div>
+
+                <div class="profile-icon">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+
+            </div>
 
         </div>
 
-        <div class="icons">
+        <!-- BANNER -->
+        <div class="banner">
 
-          <i class="fa-regular fa-bell"></i>
-          <i class="fa-regular fa-envelope"></i>
-          <i class="fa-regular fa-heart"></i>
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200" alt="Banner">
 
-        </div>
+            <div class="banner-content">
 
-        <img
-          src="https://i.pravatar.cc/100"
-          alt=""
-        >
+                <h2>
+                    Diskon Catering <br>
+                    Hingga 20%
+                </h2>
 
-      </div>
+                <p>
+                    Khusus pemesanan acara ulang tahun & gathering.
+                </p>
 
-    </div>
-
-    <!-- BANNER -->
-    <div class="banner">
-
-      <img
-        src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200"
-        alt=""
-      >
-
-      <div class="banner-content">
-
-        <h2>
-          Diskon Catering <br>
-          Hingga 20%
-        </h2>
-
-        <p>
-          Khusus pemesanan acara ulang tahun & gathering.
-        </p>
-
-      </div>
-
-    </div>
-
-    <!-- KATEGORI -->
-    <div class="section-title">
-
-      <h3>Kategori Menu</h3>
-
-      <a href="#">
-        Lihat Semua
-      </a>
-
-    </div>
-
-    <div class="categories">
-
-      <div class="category active">
-
-        <i class="fa-solid fa-cake-candles"></i>
-
-        <span>Snack</span>
-
-      </div>
-
-      <div class="category">
-
-        <i class="fa-solid fa-burger"></i>
-
-        <span>Burger</span>
-
-      </div>
-
-      <div class="category">
-
-        <i class="fa-solid fa-mug-hot"></i>
-
-        <span>Minuman</span>
-
-      </div>
-
-      <div class="category">
-
-        <i class="fa-solid fa-drumstick-bite"></i>
-
-        <span>Ayam</span>
-
-      </div>
-
-      <div class="category">
-
-        <i class="fa-solid fa-pizza-slice"></i>
-
-        <span>Pizza</span>
-
-      </div>
-
-      <div class="category">
-
-        <i class="fa-solid fa-ice-cream"></i>
-
-        <span>Dessert</span>
-
-      </div>
-
-    </div>
-
-    <!-- PRODUK -->
-    <div class="section-title">
-
-      <h3>Menu Favorit</h3>
-
-      <a href="#">
-        Lihat Semua
-      </a>
-
-    </div>
-
-    <div class="food-grid">
-
-      <!-- CARD -->
-      <div class="food-card">
-
-        <div class="food-image">
-
-          <img
-            src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1000"
-            alt=""
-          >
-
-          <span class="discount">
-            Diskon 15%
-          </span>
+            </div>
 
         </div>
 
-        <div class="food-info">
+        <!-- KATEGORI -->
+        <div class="section-title">
 
-          <div>
+            <h3>Kategori Menu</h3>
 
-            <h4>Burger Viral</h4>
-
-            <p>Rp 25.000</p>
-
-          </div>
-
-          <button>+</button>
+            <a href="#">
+                Lihat Semua
+            </a>
 
         </div>
 
-      </div>
+        <div class="categories">
 
-      <!-- CARD -->
-      <div class="food-card">
+            <div class="category active">
+                <i class="fa-solid fa-cake-candles"></i>
+                <span>Snack</span>
+            </div>
 
-        <div class="food-image">
+            <div class="category">
+                <i class="fa-solid fa-burger"></i>
+                <span>Catering</span>
+            </div>
 
-          <img
-            src="https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=1000"
-            alt=""
-          >
-
-          <span class="discount">
-            Diskon 10%
-          </span>
-
-        </div>
-
-        <div class="food-info">
-
-          <div>
-
-            <h4>Rice Bowl Gen Z</h4>
-
-            <p>Rp 30.000</p>
-
-          </div>
-
-          <button>+</button>
+            <div class="category">
+                <i class="fa-solid fa-bowl-food"></i>
+                <span>Makanan Basah</span>
+            </div>
 
         </div>
 
-      </div>
+        <!-- MENU -->
+        <div class="section-title">
 
-      <!-- CARD -->
-      <div class="food-card">
+            <h3>Menu Favorit</h3>
 
-        <div class="food-image">
-
-          <img
-            src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?q=80&w=1000"
-            alt=""
-          >
-
-          <span class="discount">
-            Diskon 20%
-          </span>
+            <a href="#">
+                Lihat Semua
+            </a>
 
         </div>
 
-        <div class="food-info">
+        <!-- PRODUK -->
+        <div class="food-grid">
 
-          <div>
+            <?php while($produk = mysqli_fetch_assoc($queryProduk)) : ?>
 
-            <h4>Toast Mozarella</h4>
+            <div class="food-card">
 
-            <p>Rp 18.000</p>
+                <div class="food-image">
 
-          </div>
+                <img 
+                    src="../admin/assets/img/<?php echo $produk['foto']; ?>" 
+                    alt="<?php echo $produk['nama_produk']; ?>"
+                >
 
-          <button>+</button>
+                <span class="discount">
+                    <?php echo !empty($produk['kategori']) ? $produk['kategori'] : 'Menu'; ?>
+                </span>
 
-        </div>
+            </div>
 
-      </div>
+                <div class="food-info">
 
-    </div>
+                    <div>
 
-  </main>
+                        <h4><?= $produk['nama_produk']; ?></h4>
 
-  <!-- RIGHTBAR -->
-  <aside class="rightbar">
+                        <p>
+                            Rp <?= number_format($produk['harga'],0,',','.'); ?>
+                        </p>
 
-    <!-- SALDO -->
-    <div class="balance-card">
+                    </div>
 
-      <p>Saldo UMKM</p>
+                    <button>+</button>
 
-      <h2>Rp 12JT</h2>
+                </div>
 
-      <div class="balance-buttons">
+            </div>
 
-        <button>Top Up</button>
-
-        <button>Transfer</button>
-
-      </div>
-
-    </div>
-
-    <!-- ALAMAT -->
-    <div class="address-card">
-
-      <h4>Alamat Pengiriman</h4>
-
-      <p>
-        📍 Bandar Lampung, Indonesia
-      </p>
-
-      <button>Ubah Alamat</button>
-
-    </div>
-
-    <!-- PESANAN -->
-    <div class="order-card">
-
-      <h3>Pesanan Hari Ini</h3>
-
-      <div class="order-item">
-
-        <img
-          src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=400"
-          alt=""
-        >
-
-        <div>
-
-          <h4>Pizza Gen Z</h4>
-
-          <p>Rp 55.000</p>
+            <?php endwhile; ?>
 
         </div>
 
-      </div>
-
-      <div class="order-item">
-
-        <img
-          src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=400"
-          alt=""
-        >
-
-        <div>
-
-          <h4>Burger Viral</h4>
-
-          <p>Rp 25.000</p>
-
-        </div>
-
-      </div>
-
-      <div class="total">
-
-        <span>Total</span>
-
-        <strong>Rp 202.000</strong>
-
-      </div>
-
-      <button class="checkout">
-        Checkout Sekarang
-      </button>
-
-    </div>
-
-  </aside>
+    </main>
 
 </div>
 

@@ -1,0 +1,274 @@
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#fff4f8;
+}
+
+/* LAYOUT */
+
+.dashboard{
+    display:flex;
+    min-height:100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    width:280px;
+    background:linear-gradient(180deg,#ff8fc7,#ff5ea8);
+    padding:40px 25px;
+    color:white;
+    border-radius:0 35px 35px 0;
+}
+
+.profile{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.profile-circle{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    background:white;
+    color:#ff5ea8;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:40px;
+    font-weight:700;
+    margin:auto;
+}
+
+.profile h2{
+    margin-top:18px;
+    font-size:30px;
+}
+
+.profile p{
+    font-size:17px;
+    margin-top:5px;
+}
+
+.menu{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.menu a{
+    text-decoration:none;
+    color:white;
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding:18px 20px;
+    border-radius:18px;
+    font-size:22px;
+    font-weight:500;
+    transition:.3s;
+}
+
+.menu a.active,
+.menu a:hover{
+    background:white;
+    color:#ff5ea8;
+}
+
+/* CONTENT */
+
+.content{
+    flex:1;
+    padding:35px;
+}
+
+/* TOPBAR */
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:40px;
+}
+
+.topbar h1{
+    font-size:50px;
+    font-weight:700;
+}
+
+.topbar p{
+    color:#777;
+    margin-top:8px;
+}
+
+.search-box{
+    width:350px;
+    background:white;
+    border-radius:18px;
+    padding:15px 20px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.search-box input{
+    border:none;
+    outline:none;
+    width:100%;
+    background:none;
+}
+
+/* FILTER */
+
+.filter-menu{
+    display:flex;
+    gap:15px;
+    margin-bottom:35px;
+}
+
+.filter-menu a{
+    text-decoration:none;
+    background:white;
+    color:black;
+    padding:14px 28px;
+    border-radius:15px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.filter-menu a.active{
+    background:#ff4fa0;
+    color:white;
+}
+
+/* CARD GRID */
+
+.catalog-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+    gap:28px;
+}
+
+/* CARD */
+
+.card{
+    background:white;
+    border-radius:30px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+}
+
+.card-image{
+    position:relative;
+}
+
+.card-image img{
+    width:100%;
+    height:230px;
+    object-fit:cover;
+}
+
+.label{
+    position:absolute;
+    top:18px;
+    left:18px;
+    background:#ff4fa0;
+    color:white;
+    padding:8px 16px;
+    border-radius:12px;
+    font-size:14px;
+    font-weight:600;
+}
+
+.card-body{
+    padding:25px;
+}
+
+.rating{
+    color:#ffc107;
+    margin-bottom:15px;
+    font-size:17px;
+}
+
+.card-body h3{
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+.deskripsi{
+    color:#777;
+    line-height:1.6;
+    margin-bottom:20px;
+}
+
+.harga{
+    font-size:38px;
+    color:#ff4fa0;
+    font-weight:700;
+    margin-bottom:22px;
+}
+
+.action{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.btn{
+    border:none;
+    background:#ff4fa0;
+    color:white;
+    padding:14px 25px;
+    border-radius:14px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.favorite{
+    width:50px;
+    height:50px;
+    background:#fff1f7;
+    border-radius:14px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#ff4fa0;
+}
+
+/* FORM CATERING */
+
+.form-catering{
+    margin-top:25px;
+    display:none;
+    flex-direction:column;
+    gap:14px;
+}
+
+.form-catering input,
+.form-catering textarea{
+    border:1px solid #eee;
+    padding:14px;
+    border-radius:14px;
+    outline:none;
+}
+
+.form-catering button{
+    border:none;
+    background:#ff4fa0;
+    color:white;
+    padding:15px;
+    border-radius:14px;
+    font-weight:600;
+    cursor:pointer;
+}

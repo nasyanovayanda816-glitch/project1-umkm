@@ -75,9 +75,6 @@ body{
   border-radius:30px;
   padding:30px 20px;
   color:white;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
 }
 
 .logo h2{
@@ -87,23 +84,50 @@ body{
 
 .menu{
   list-style:none;
+  padding:0;
 }
 
 .menu li{
-  padding:16px 18px;
-  border-radius:15px;
-  display:flex;
-  align-items:center;
-  gap:15px;
-  margin-bottom:10px;
-  cursor:pointer;
+  margin-bottom:12px;
+  border-radius:18px;
   transition:0.3s;
 }
 
-.menu li.active,
-.menu li:hover{
+/* LINK MENU */
+.menu li a{
+  display:flex;
+  align-items:center;
+  gap:15px;
+
+  padding:16px 18px;
+  border-radius:18px;
+
+  text-decoration:none;
+  color:white;
+
+  font-size:18px;
+  font-weight:500;
+
+  transition:0.3s;
+}
+
+/* ICON */
+.menu li a i{
+  width:20px;
+  text-align:center;
+}
+
+/* ACTIVE */
+.menu li.active a{
   background:white;
   color:#ff4fa0;
+}
+
+/* HOVER */
+.menu li a:hover{
+  background:white;
+  color:#ff4fa0;
+
 }
 
 .upgrade-box{
@@ -411,4 +435,21 @@ body{
     grid-template-columns:1fr;
   }
 
+}
+/* =========================
+   USER PROFILE BULATAN
+========================= */
+
+.user-profile{
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #e5e5e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 18px;
+  color: #555;
+  cursor: pointer;
 }
