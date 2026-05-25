@@ -4,6 +4,8 @@ session_start();
 
 include 'config/koneksi.php';
 
+$page = "produk.php";
+
 $data = mysqli_query($conn, "SELECT * FROM produk");
 
 ?>
@@ -34,33 +36,38 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 <main class="main">
 
-<?php $pageTitle = "Produk";?>
-
+<?php $pageTitle = "Produk"; ?>
 <?php include 'includes/topbar.php'; ?>
 
 <div class="table-card">
 
-<div class="table-header">
+    <div class="table-header">
 
-<h5>Data Produk</h5>
+        <h5>Data Produk</h5>
 
-<a href="add-produk.php" class="btn btn-primary">
-Tambah Produk
-</a>
+        <a href="add-produk.php" class="btn btn-primary">
+            <i class="fa fa-plus"></i>
+            Tambah Produk
+        </a>
 
-</div>
+    </div>
 
-<table class="table align-middle produk-table">
+    <table class="table align-middle produk-table">
 
-<thead>
+       <thead>
+
 <tr>
-<th>No</th>
-<th>Foto</th>
-<th>Nama Produk</th>
-<th>Harga</th>
-<th>Stok</th>
-<th>Aksi</th>
+
+    <th>No</th>
+    <th>Foto</th>
+    <th>Produk</th>
+    <th>Harga</th>
+    <th>Kategori</th>
+    <th>Stok</th>
+    <th width="120">Aksi</th>
+
 </tr>
+
 </thead>
 
 <tbody>
@@ -71,63 +78,102 @@ Tambah Produk
 
 <tr>
 
-<td><?= $no++; ?></td>
+    <!-- NO -->
+    <td>
+        <?= $no++; ?>
+    </td>
 
-<td>
+    <!-- FOTO -->
+    <td>
 
-<?php if($row['foto']) : ?>
+    <?php if($row['foto']) : ?>
 
-<img
-src="assets/img/<?= $row['foto']; ?>"
-width="70"
-class="rounded">
+        <img
+        src="assets/img/<?= $row['foto']; ?>"
+        class="produk-img">
 
-<?php endif; ?>
+    <?php endif; ?>
 
-</td>
+    </td>
 
-<td><?= $row['nama_produk']; ?></td>
+    <!-- PRODUK + DESKRIPSI -->
+    <td>
 
-<td>
-Rp <?= number_format($row['harga']); ?>
-</td>
+        <strong class="produk-title">
+            <?= $row['nama_produk']; ?>
+        </strong>
 
-<td><?= $row['stok']; ?></td>
+        <div class="produk-deskripsi">
 
-<td>
+            <?= $row['deskripsi']; ?>
 
-<a
-href="edit-produk.php?id=<?= $row['id_produk']; ?>"
-class="btn btn-warning btn-sm">
+        </div>
 
-Edit
+    </td>
 
-</a>
+    <!-- HARGA -->
+    <td>
 
-<a
-href="delete-produk.php?id=<?= $row['id_produk']; ?>"
-class="btn btn-danger btn-sm"
-onclick="return confirm('Hapus produk ini?')">
+        <strong>
+            Rp <?= number_format($row['harga']); ?>
+        </strong>
 
-Hapus
+    </td>
 
-</a>
+    <!-- KATEGORI -->
+    <td>
 
-</td>
+    <?php if($row['kategori'] == 'Snack') : ?>
+
+        <span class="badge bg-warning text-dark">
+            Snack
+        </span>
+
+    <?php else : ?>
+
+        <span class="badge bg-success">
+            Catering
+        </span>
+
+    <?php endif; ?>
+
+    </td>
+
+    <!-- STOK -->
+    <td>
+
+        <?= $row['stok']; ?>
+
+    </td>
+
+    <!-- AKSI -->
+    <td>
+
+        <div class="aksi-produk">
+
+            <a
+            href="edit-produk.php?id=<?= $row['id_produk']; ?>"
+            class="btn-edit-mini">
+
+                <i class="fa fa-pen"></i>
+
+            </a>
+
+            <a
+            href="delete-produk.php?id=<?= $row['id_produk']; ?>"
+            class="btn-delete-mini"
+            onclick="return confirm('Hapus produk ini?')">
+
+                <i class="fa fa-trash"></i>
+
+            </a>
+
+        </div>
+
+    </td>
 
 </tr>
 
 <?php endwhile; ?>
 
 </tbody>
-
-</table>
-
-</div>
-
-</main>
-
-</div>
-
-</body>
-</html>

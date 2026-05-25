@@ -877,3 +877,122 @@ body {
     }
 
 }
+.badge{
+    padding:8px 14px;
+    border-radius:999px;
+    font-size:12px;
+}
+/* =========================================
+   AKSI PRODUK MINI
+========================================= */
+
+.aksi-produk{
+    white-space: nowrap;
+}
+
+.btn-edit-mini,
+.btn-delete-mini{
+    width:38px;
+    height:38px;
+    border-radius:12px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    margin-right:6px;
+    transition:0.3s;
+    font-size:14px;
+}
+
+.btn-edit-mini{
+    background:#fef3c7;
+    color:#d97706;
+}
+
+.btn-delete-mini{
+    background:#ffe4e6;
+    color:#e11d48;
+}
+
+.btn-edit-mini:hover,
+.btn-delete-mini:hover{
+    transform:translateY(-2px);
+}
+
+/* =========================================
+   DESKRIPSI PRODUK
+========================================= */
+
+.produk-title{
+    font-size:15px;
+    color:#111827;
+}
+
+.produk-deskripsi{
+    font-size:13px;
+    color:#6b7280;
+    margin-top:6px;
+    line-height:1.5;
+    max-width:260px;
+}
+/* =========================================
+   PRODUK TABLE MODERN
+========================================= */
+
+.produk-table td{
+    vertical-align: middle;
+}
+
+.produk-img{
+    width:70px;
+    height:70px;
+    object-fit:cover;
+    border-radius:18px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+.produk-title{
+    font-size:15px;
+    font-weight:700;
+    color:#111827;
+}
+
+.produk-deskripsi{
+    font-size:13px;
+    color:#6b7280;
+    margin-top:6px;
+    line-height:1.5;
+    max-width:260px;
+}
+
+.aksi-produk{
+    display:flex;
+    gap:8px;
+}
+
+.btn-edit-mini,
+.btn-delete-mini{
+    width:38px;
+    height:38px;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.btn-edit-mini{
+    background:#fef3c7;
+    color:#d97706;
+}
+
+.btn-delete-mini{
+    background:#ffe4e6;
+    color:#e11d48;
+}
+
+.btn-edit-mini:hover,
+.btn-delete-mini:hover{
+    transform:translateY(-2px);
+}

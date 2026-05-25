@@ -52,7 +52,7 @@ $query = mysqli_query($conn, "SELECT * FROM produk ORDER BY id_produk DESC");
         <i class="fa-solid fa-house"></i> Beranda > Produk
     </div>
 
-    <h1 class="title">Produk</h1>
+    <h1 class="title">Beranda</h1>
 
     <p class="subtitle">
         Jelajahi koleksi produk berkualitas tinggi kami yang dikurasi
