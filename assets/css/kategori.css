@@ -1,0 +1,90 @@
+.categories{
+    display: flex;
+    gap: 20px;
+    margin: 20px 0 35px;
+}
+
+.category{
+    border: none;
+    padding: 18px 28px;
+    border-radius: 18px;
+    background: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ff4f93;
+    transition: 0.3s;
+}
+
+.category i{
+    margin-right: 8px;
+}
+
+.category.active{
+    background: #ff4f93;
+    color: white;
+}
+
+.food-grid{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 25px;
+}
+
+.food-card{
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.food-image{
+    position: relative;
+}
+
+.food-image img{
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+.discount{
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #ff4f93;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.food-info{
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.food-info h4{
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.food-info p{
+    color: #ff4f93;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.food-info button{
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    background: #ff4f93;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+}

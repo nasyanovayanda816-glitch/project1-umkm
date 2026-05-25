@@ -261,33 +261,39 @@ body{
 /* CATEGORY */
 
 .categories{
-  display:grid;
-  grid-template-columns:repeat(6,1fr);
-  gap:15px;
-  margin-bottom:35px;
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
 }
 
 .category{
-  background:white;
-  padding:20px;
-  border-radius:20px;
-  text-align:center;
-  cursor:pointer;
+    width: 170px;
+    height: 90px;
+    background: #fff;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    text-decoration: none;
+    color: #222;
+    font-weight: 600;
+    transition: 0.3s;
 }
 
 .category i{
-  font-size:25px;
-  color:#ff4fa0;
-  margin-bottom:10px;
+    color: #ff4f9a;
+    font-size: 24px;
 }
 
 .category.active{
-  background:#ff4fa0;
-  color:white;
+    background: #ff4f9a;
+    color: white;
 }
 
 .category.active i{
-  color:white;
+    color: white;
 }
 
 /* FOOD */

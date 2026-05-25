@@ -1,7 +1,6 @@
 <?php
 require_once '../config/koneksi.php';
-?>
-<?php
+
 session_start();
 // Panggil file koneksi
 require_once '../config/koneksi.php';
@@ -46,6 +45,7 @@ if (isset($_POST['register'])) {
         }
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -55,6 +55,8 @@ if (isset($_POST['register'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Akun - FlavorVibe</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        />
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fafafa; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
         .auth-card { background: #fff; padding: 40px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); width: 100%; max-width: 450px; }
@@ -69,6 +71,23 @@ if (isset($_POST['register'])) {
         .auth-link { text-align: center; margin-top: 20px; font-size: 14px; }
         .auth-link a { color: #f26b7a; text-decoration: none; font-weight: 600; }
         .alert-error { background-color: #ffebee; color: #c62828; padding: 10px; border-radius: 6px; margin-bottom: 15px; font-size: 14px; border: 1px solid #ffcdd2; }
+        .password-box{
+    position: relative;
+}
+
+.password-box input{
+    width: 100%;
+    padding: 14px 10px 14px 15px;
+}
+
+.password-box i{
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #888;
+}
     </style>
 </head>
 <body>
@@ -99,13 +118,43 @@ if (isset($_POST['register'])) {
                 <textarea name="alamat" rows="3" required placeholder="Masukkan alamat pengiriman"></textarea>
             </div>
             <div class="form-group">
-                <label>Password</label>
-                <input type="password" name="password" required placeholder="Buat password">
-            </div>
+
+    <label>Konfirmasi Password</label>
+
+    <div class="password-box">
+
+        <input 
+            type="password" 
+            name="konfirmasi"
+            id="konfirmasi"
+            required 
+            placeholder="Ulangi password"
+        >
+
+        <i class="fa-solid fa-eye" id="toggleKonfirmasi"></i>
+
+    </div>
+
+</div>
             <div class="form-group">
-                <label>Konfirmasi Password</label>
-                <input type="password" name="konfirmasi" required placeholder="Ulangi password">
-            </div>
+
+    <label>Konfirmasi Password</label>
+
+    <div class="password-box">
+
+        <input 
+            type="password" 
+            name="konfirmasi"
+            id="konfirmasi"
+            required 
+            placeholder="Ulangi password"
+        >
+
+        <i class="fa-solid fa-eye" id="toggleKonfirmasi"></i>
+
+    </div>
+
+</div>
             <button type="submit" name="register" class="btn-submit">Daftar Sekarang</button>
         </form>
 
@@ -115,4 +164,22 @@ if (isset($_POST['register'])) {
     </div>
 
 </body>
+<script>
+
+const toggleKonfirmasi = document.getElementById("toggleKonfirmasi");
+const konfirmasi = document.getElementById("konfirmasi");
+
+toggleKonfirmasi.addEventListener("click", function(){
+
+    const type = konfirmasi.getAttribute("type") === "password"
+        ? "text"
+        : "password";
+
+    konfirmasi.setAttribute("type", type);
+
+    this.classList.toggle("fa-eye-slash");
+
+});
+
+</script>
 </html>

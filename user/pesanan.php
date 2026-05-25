@@ -42,10 +42,12 @@ $nama = $_SESSION['nama'];
 
     <ul class="nav-menu">
 
-        <li><a href="index.user.php">Beranda</a></li>
-        <li><a href="#">Catalog</a></li>
+         <li><a href="index.user.php">Produk</a></li>
+        <li><a href="../index.php">Beranda</a></li>
+        <li><a href="../catalog.php">Catalog</a></li>
         <li><a href="#">Tentang Kami</a></li>
         <li><a href="../auth/logout.php">Logout</a></li>
+
 
     </ul>
 
@@ -74,7 +76,7 @@ $nama = $_SESSION['nama'];
   <li>
     <a href="index.user.php">
       <i class="fa-solid fa-house"></i>
-      Dashboard
+      Prodak
     </a>
   </li>
 

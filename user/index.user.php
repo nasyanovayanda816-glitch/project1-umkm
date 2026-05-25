@@ -10,11 +10,31 @@ include '../config/koneksi.php';
 
 $nama = $_SESSION['nama'];
 
-/* QUERY PRODUK */
-$queryProduk = mysqli_query($conn, "
-    SELECT * FROM produk 
-    ORDER BY id_produk DESC
-");
+/* =========================
+   FILTER KATEGORI
+========================= */
+
+$kategori = isset($_GET['kategori']) 
+    ? $_GET['kategori'] 
+    : 'semua';
+
+/* =========================
+   QUERY PRODUK
+========================= */
+
+if($kategori == 'semua'){
+
+    $query = "SELECT * FROM produk ORDER BY id_produk DESC";
+
+} else {
+
+    $query = "SELECT * FROM produk 
+              WHERE kategori='$kategori'
+              ORDER BY id_produk DESC";
+}
+
+$queryProduk = mysqli_query($conn, $query);
+
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +62,10 @@ $queryProduk = mysqli_query($conn, "
 
 <body>
 
-<!-- NAVBAR -->
+<!-- =========================
+        NAVBAR
+========================= -->
+
 <nav class="top-navbar">
 
     <div class="nav-logo">
@@ -51,8 +74,9 @@ $queryProduk = mysqli_query($conn, "
 
     <ul class="nav-menu">
 
-        <li><a href="#">Beranda</a></li>
-        <li><a href="catalog.php">Catalog</a></li>
+        <li><a href="index.user.php">Produk</a></li>
+        <li><a href="../index.php">Beranda</a></li>
+        <li><a href="../catalog.php">Catalog</a></li>
         <li><a href="#">Tentang Kami</a></li>
         <li><a href="../auth/logout.php">Logout</a></li>
 
@@ -62,7 +86,10 @@ $queryProduk = mysqli_query($conn, "
 
 <div class="dashboard">
 
-    <!-- SIDEBAR -->
+    <!-- =========================
+            SIDEBAR
+    ========================= -->
+
     <aside class="sidebar">
 
         <div class="logo">
@@ -74,7 +101,7 @@ $queryProduk = mysqli_query($conn, "
             <li class="active">
                 <a href="index.user.php">
                     <i class="fa-solid fa-house"></i>
-                    Dashboard
+                    Produk
                 </a>
             </li>
 
@@ -124,10 +151,14 @@ $queryProduk = mysqli_query($conn, "
 
     </aside>
 
-    <!-- MAIN -->
+    <!-- =========================
+            MAIN CONTENT
+    ========================= -->
+
     <main class="main-content">
 
         <!-- TOPBAR -->
+
         <div class="topbar">
 
             <div>
@@ -140,7 +171,10 @@ $queryProduk = mysqli_query($conn, "
 
                     <i class="fa-solid fa-magnifying-glass"></i>
 
-                    <input type="text" placeholder="Cari menu catering...">
+                    <input 
+                        type="text" 
+                        placeholder="Cari menu catering..."
+                    >
 
                 </div>
 
@@ -160,10 +194,16 @@ $queryProduk = mysqli_query($conn, "
 
         </div>
 
-        <!-- BANNER -->
+        <!-- =========================
+                BANNER
+        ========================= -->
+
         <div class="banner">
 
-            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200" alt="Banner">
+            <img 
+                src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200" 
+                alt=""
+            >
 
             <div class="banner-content">
 
@@ -180,7 +220,10 @@ $queryProduk = mysqli_query($conn, "
 
         </div>
 
-        <!-- KATEGORI -->
+        <!-- =========================
+                KATEGORI
+        ========================= -->
+
         <div class="section-title">
 
             <h3>Kategori Menu</h3>
@@ -193,24 +236,42 @@ $queryProduk = mysqli_query($conn, "
 
         <div class="categories">
 
-            <div class="category active">
+            <!-- SEMUA -->
+
+            <a href="index.user.php?kategori=semua"
+               class="category <?= ($kategori == 'semua') ? 'active' : ''; ?>">
+
+                <i class="fa-solid fa-layer-group"></i>
+                <span>Semua</span>
+
+            </a>
+
+            <!-- SNACK -->
+
+            <a href="index.user.php?kategori=snack"
+               class="category <?= ($kategori == 'snack') ? 'active' : ''; ?>">
+
                 <i class="fa-solid fa-cake-candles"></i>
                 <span>Snack</span>
-            </div>
 
-            <div class="category">
+            </a>
+
+            <!-- CATERING -->
+
+            <a href="index.user.php?kategori=catering"
+               class="category <?= ($kategori == 'catering') ? 'active' : ''; ?>">
+
                 <i class="fa-solid fa-burger"></i>
                 <span>Catering</span>
-            </div>
 
-            <div class="category">
-                <i class="fa-solid fa-bowl-food"></i>
-                <span>Makanan Basah</span>
-            </div>
+            </a>
 
         </div>
 
-        <!-- MENU -->
+        <!-- =========================
+                PRODUK
+        ========================= -->
+
         <div class="section-title">
 
             <h3>Menu Favorit</h3>
@@ -221,7 +282,6 @@ $queryProduk = mysqli_query($conn, "
 
         </div>
 
-        <!-- PRODUK -->
         <div class="food-grid">
 
             <?php while($produk = mysqli_fetch_assoc($queryProduk)) : ?>
@@ -230,22 +290,30 @@ $queryProduk = mysqli_query($conn, "
 
                 <div class="food-image">
 
-                <img 
-                    src="../admin/assets/img/<?php echo $produk['foto']; ?>" 
-                    alt="<?php echo $produk['nama_produk']; ?>"
-                >
+                    <img 
+                        src="../admin/assets/img/<?php echo $produk['foto']; ?>" 
+                        alt="<?php echo $produk['nama_produk']; ?>"
+                    >
 
-                <span class="discount">
-                    <?php echo !empty($produk['kategori']) ? $produk['kategori'] : 'Menu'; ?>
-                </span>
+                    <span class="discount">
 
-            </div>
+                        <?php 
+                        echo !empty($produk['kategori']) 
+                        ? $produk['kategori'] 
+                        : 'Menu'; 
+                        ?>
+
+                    </span>
+
+                </div>
 
                 <div class="food-info">
 
                     <div>
 
-                        <h4><?= $produk['nama_produk']; ?></h4>
+                        <h4>
+                            <?= $produk['nama_produk']; ?>
+                        </h4>
 
                         <p>
                             Rp <?= number_format($produk['harga'],0,',','.'); ?>
