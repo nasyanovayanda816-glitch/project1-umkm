@@ -50,7 +50,7 @@ Tambah Produk
 
 </div>
 
-<table class="table align-middle">
+<table class="table align-middle produk-table">
 
 <thead>
 <tr>

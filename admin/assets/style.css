@@ -7,7 +7,7 @@
 }
 
 body {
-  background: #f5f7fb;
+  background: #f8fafc;
   color: #1f2937;
 }
 
@@ -20,10 +20,11 @@ body {
 .sidebar {
   width: 270px;
   height: 100vh;
-  background: #111827;
+  background: linear-gradient(180deg,#ec4899,#db2777);
   padding: 25px;
   position: fixed;
   color: white;
+  box-shadow: 8px 0 30px rgba(236,72,153,0.15);
 }
 
 .logo {
@@ -62,8 +63,9 @@ body {
 
 .menu li a:hover,
 .menu li.active a {
-  background: #2563eb;
+  background: rgba(255,255,255,0.18);
   color: white;
+  transform: translateX(5px);
 }
 
 /* MAIN CONTENT */
@@ -388,4 +390,490 @@ body {
     border-radius:16px !important;
     font-weight:700 !important;
     margin-top:10px !important;
+}
+
+/* =========================================
+   TRANSAKSI STYLE PREMIUM
+========================================= */
+
+.transaksi-container{
+    margin-top:25px;
+}
+
+/* HEADER */
+
+.transaksi-header{
+    margin-bottom:20px;
+}
+
+.transaksi-header h2{
+    font-size:36px;
+    font-weight:800;
+    color:#1e1b4b;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.transaksi-header p{
+    color:#94a3b8;
+    margin-top:8px;
+}
+
+/* FILTER */
+
+.filter-box{
+    background:white;
+    border-radius:18px;
+    padding:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.04);
+    margin-bottom:25px;
+    border:1px solid #eef2ff;
+}
+
+.filter-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr 2fr 180px;
+    gap:18px;
+    align-items:end;
+}
+
+.filter-grid label{
+    display:block;
+    font-size:14px;
+    margin-bottom:8px;
+    font-weight:600;
+    color:#475569;
+}
+
+.filter-grid input{
+    width:100%;
+    height:52px;
+    border:1px solid #e2e8f0;
+    border-radius:12px;
+    padding:0 15px;
+    outline:none;
+    background:#fff;
+    transition:0.3s;
+}
+
+.filter-grid input:focus{
+    border-color:#4f46e5;
+    box-shadow:0 0 0 4px rgba(79,70,229,0.1);
+}
+
+.filter-grid button{
+    height:52px;
+    border:none;
+    border-radius:12px;
+    background:#2563eb;
+    color:white;
+    font-weight:700;
+    transition:0.3s;
+}
+
+.filter-grid button:hover{
+    background:#1d4ed8;
+}
+
+/* TABLE CARD */
+
+.table-card{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,0.04);
+    border:1px solid #eef2ff;
+}
+
+/* TABLE */
+
+.transaksi-table{
+    margin:0;
+}
+
+.transaksi-table thead{
+    background:#f8fafc;
+}
+
+.transaksi-table thead th{
+    border:none;
+    padding:18px;
+    color:#64748b;
+    font-size:13px;
+    font-weight:700;
+}
+
+.transaksi-table tbody td{
+    padding:20px 18px;
+    vertical-align:middle;
+    border-top:1px solid #f1f5f9;
+}
+
+.transaksi-table tbody tr{
+    transition:0.3s;
+}
+
+.transaksi-table tbody tr:hover{
+    background:#fafafa;
+}
+
+/* INVOICE */
+
+.invoice-number{
+    font-weight:800;
+    color:#1e293b;
+    font-size:15px;
+}
+
+.invoice-date{
+    font-size:13px;
+    color:#94a3b8;
+    margin-top:4px;
+}
+
+/* BADGES */
+
+.badge-lunas{
+    background:#dcfce7;
+    color:#166534;
+    padding:8px 14px;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:700;
+}
+
+.badge-belum{
+    background:#ffe4e6;
+    color:#be123c;
+    padding:8px 14px;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:700;
+}
+
+.badge-proses{
+    background:#e0e7ff;
+    color:#3730a3;
+    padding:8px 14px;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:700;
+}
+
+/* TOTAL */
+
+.total-harga{
+    font-weight:800;
+    color:#be123c;
+}
+
+/* AKSI */
+
+.aksi-btn{
+    display:flex;
+    gap:10px;
+}
+
+.aksi-btn a{
+    width:36px;
+    height:36px;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.aksi-btn a:first-child{
+    background:#eff6ff;
+    color:#2563eb;
+}
+
+.aksi-btn a:last-child{
+    background:#ffe4e6;
+    color:#e11d48;
+}
+
+.aksi-btn a:hover{
+    transform:translateY(-2px);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:992px){
+
+    .filter-grid{
+        grid-template-columns:1fr;
+    }
+
+    .table-card{
+        overflow:auto;
+    }
+
+    .transaksi-table{
+        min-width:900px;
+    }
+
+}
+/* =========================================
+   PRODUK MODERN
+========================================= */
+
+.table-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.table-header h5{
+    font-size:28px;
+    font-weight:800;
+    margin:0;
+}
+
+.table-header .btn{
+    background:linear-gradient(135deg,#ec4899,#db2777);
+    border:none;
+    padding:12px 22px;
+    border-radius:14px;
+    font-weight:700;
+}
+
+.table-header .btn:hover{
+    transform:translateY(-2px);
+}
+
+.table{
+    margin:0;
+}
+
+.table thead th{
+    border:none;
+    background:#fff1f7;
+    color:#be185d;
+    padding:18px;
+    font-size:13px;
+    font-weight:700;
+}
+
+.table tbody td{
+    padding:20px 18px;
+    vertical-align:middle;
+    border-top:1px solid #f3f4f6;
+}
+
+.table tbody tr{
+    transition:0.3s;
+}
+
+.table tbody tr:hover{
+    background:#fff7fb;
+}
+
+.table img{
+    width:70px;
+    height:70px;
+    object-fit:cover;
+    border-radius:18px;
+}
+
+.btn-warning{
+    background:#f59e0b !important;
+    border:none !important;
+    border-radius:12px !important;
+    padding:8px 14px !important;
+    font-weight:600 !important;
+}
+
+.btn-danger{
+    background:#ef4444 !important;
+    border:none !important;
+    border-radius:12px !important;
+    padding:8px 14px !important;
+    font-weight:600 !important;
+}
+
+.transaksi-modern-card{
+    border-radius:32px;
+    overflow:hidden;
+}
+
+.transaksi-table tbody tr:hover{
+    background:#fff1f7;
+}
+
+.transaksi-table td strong{
+    color:#db2777;
+    font-weight:800;
+}
+
+.stat-card{
+    position:relative;
+    overflow:hidden;
+}
+
+.stat-card::before{
+    content:'';
+    position:absolute;
+    width:120px;
+    height:120px;
+    background:rgba(255,255,255,0.12);
+    border-radius:50%;
+    top:-40px;
+    right:-40px;
+}
+/* =========================================
+   LAPORAN MODERN
+========================================= */
+
+.laporan-container{
+    margin-top:25px;
+}
+
+.laporan-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.laporan-title h2{
+    font-size:34px;
+    font-weight:800;
+    color:#111827;
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.laporan-title i{
+    color:#2563eb;
+}
+
+.laporan-export{
+    display:flex;
+    gap:12px;
+}
+
+.btn-pdf,
+.btn-excel{
+    text-decoration:none;
+    padding:12px 20px;
+    border-radius:14px;
+    font-weight:700;
+    color:white;
+    transition:0.3s;
+}
+
+.btn-pdf{
+    background:#ef4444;
+}
+
+.btn-excel{
+    background:#16a34a;
+}
+
+.btn-pdf:hover,
+.btn-excel:hover{
+    transform:translateY(-2px);
+    color:white;
+}
+
+.laporan-filter-card{
+    background:white;
+    padding:25px;
+    border-radius:28px;
+    box-shadow:0 10px 35px rgba(0,0,0,0.05);
+    margin-bottom:25px;
+}
+
+.laporan-filter-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr 240px;
+    gap:18px;
+    align-items:end;
+}
+
+.laporan-filter-grid label{
+    display:block;
+    margin-bottom:10px;
+    font-weight:700;
+    color:#374151;
+}
+
+.laporan-filter-grid input{
+    width:100%;
+    height:58px;
+    border:none;
+    background:#f3f4f6;
+    border-radius:16px;
+    padding:0 18px;
+    outline:none;
+}
+
+.laporan-filter-grid input:focus{
+    background:white;
+    border:2px solid #2563eb;
+}
+
+.laporan-filter-grid button{
+    height:58px;
+    border:none;
+    border-radius:16px;
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    color:white;
+    font-weight:700;
+    transition:0.3s;
+}
+
+.laporan-filter-grid button:hover{
+    transform:translateY(-2px);
+}
+
+.laporan-table-card{
+    background:white;
+    border-radius:28px;
+    padding:25px;
+    box-shadow:0 10px 35px rgba(0,0,0,0.05);
+}
+
+.laporan-table{
+    margin:0;
+}
+
+.laporan-table thead th{
+    border:none;
+    color:#94a3b8;
+    font-size:13px;
+    font-weight:800;
+    padding:20px;
+}
+
+.laporan-table tbody td{
+    padding:28px 20px;
+    border-top:1px solid #f1f5f9;
+}
+
+.empty-laporan{
+    text-align:center;
+    color:#94a3b8;
+    padding:60px !important;
+    font-size:16px;
+}
+
+@media(max-width:992px){
+
+    .laporan-top{
+        flex-direction:column;
+        gap:20px;
+        align-items:flex-start;
+    }
+
+    .laporan-filter-grid{
+        grid-template-columns:1fr;
+    }
+
 }

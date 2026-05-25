@@ -165,7 +165,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         <h5>Preview Produk</h5>
 
         <img
-        src="../assets/img/<?= $produk['foto']; ?>"
+        src="assets/img/<?= $produk['foto']; ?>"
         id="preview"
         class="preview-modern">
 
