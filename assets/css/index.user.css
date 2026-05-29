@@ -1,462 +1,502 @@
 /* =========================
-   TOP NAVBAR
+   RESET
 ========================= */
 
-.top-navbar{
-    width: 100%;
-    height: 90px;
-    background: linear-gradient(90deg,#ff6b9d,#ff5f87);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 60px;
-    box-sizing: border-box;
-    position: sticky;
-    top: 0;
-    z-index: 999;
-}
-
-.nav-logo{
-    color: white;
-    font-size: 42px;
-    font-weight: 700;
-    font-family: 'Poppins', sans-serif;
-}
-
-.nav-menu{
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    list-style: none;
-}
-
-.nav-menu li a{
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-    font-weight: 500;
-    transition: 0.3s;
-}
-
-.nav-menu li a:hover{
-    opacity: 0.7;
-}
-
-
-/* BIAR DASHBOARD GA NEMPEL */
-.dashboard{
-    margin-top: 25px;
-}
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    min-height:100%;
+    overflow-x:hidden;
 }
 
 body{
-  font-family:'Poppins', sans-serif;
-  background:#ffdff0;
-  padding:20px;
+    font-family:'Poppins', sans-serif;
+    background:#ffdff0;
 }
+
+/* =========================
+   DASHBOARD LAYOUT
+========================= */
 
 .dashboard{
-  display:grid;
-  grid-template-columns:260px 1fr 320px;
-  gap:20px;
-  background:#ffeaf5;
-  border-radius:35px;
-  padding:20px;
-  min-height:100vh;
+    width:100%;
+    min-height:100vh;
+
+    display:grid;
+    grid-template-columns:260px 1fr;
+    gap:20px;
+
+    padding:20px;
+
+    background:#ffeaf5;
 }
 
-/* SIDEBAR */
+/* =========================
+   SIDEBAR
+========================= */
 
 .sidebar{
-  background:linear-gradient(180deg,#ff8fc7,#ff69b4);
-  border-radius:30px;
-  padding:30px 20px;
-  color:white;
+    background:linear-gradient(180deg,#ff8fc7,#ff69b4);
+    border-radius:30px;
+    padding:30px 20px;
+    color:white;
+
+    position:sticky;
+    top:20px;
+
+    height:calc(100vh - 40px);
 }
 
 .logo h2{
-  font-size:32px;
-  margin-bottom:40px;
+    font-size:32px;
+    margin-bottom:45px;
+    font-weight:700;
 }
 
 .menu{
-  list-style:none;
-  padding:0;
+    list-style:none;
 }
 
 .menu li{
-  margin-bottom:12px;
-  border-radius:18px;
-  transition:0.3s;
+    margin-bottom:15px;
 }
 
-/* LINK MENU */
 .menu li a{
-  display:flex;
-  align-items:center;
-  gap:15px;
+    display:flex;
+    align-items:center;
+    gap:15px;
 
-  padding:16px 18px;
-  border-radius:18px;
+    padding:16px 18px;
 
-  text-decoration:none;
-  color:white;
+    border-radius:18px;
 
-  font-size:18px;
-  font-weight:500;
+    text-decoration:none;
+    color:white;
 
-  transition:0.3s;
+    font-size:18px;
+    font-weight:500;
+
+    transition:0.3s;
 }
 
-/* ICON */
 .menu li a i{
-  width:20px;
-  text-align:center;
+    width:20px;
+    text-align:center;
 }
 
-/* ACTIVE */
+.menu li.active a i{
+    color:#ff4fa0;
+}
+
 .menu li.active a{
-  background:white;
-  color:#ff4fa0;
+    background:white;
+    color:#ff4fa0;
 }
 
-/* HOVER */
 .menu li a:hover{
-  background:white;
-  color:#ff4fa0;
-
+    background:white;
+    color:#ff4fa0;
 }
 
-.upgrade-box{
-  background:rgba(255,255,255,0.2);
-  padding:20px;
-  border-radius:20px;
-}
-
-.upgrade-box h3{
-  font-size:14px;
-  line-height:1.6;
-  margin-bottom:20px;
-}
-
-.upgrade-box button{
-  width:100%;
-  border:none;
-  padding:12px;
-  border-radius:12px;
-  background:white;
-  color:#ff4fa0;
-  font-weight:600;
-  cursor:pointer;
-}
-
-/* MAIN */
+/* =========================
+   MAIN CONTENT
+========================= */
 
 .main-content{
-  background:#fff7fb;
-  border-radius:30px;
-  padding:25px;
+    background:#fff7fb;
+    border-radius:30px;
+    padding:25px;
+
+    width:100%;
 }
 
-/* TOPBAR */
+/* =========================
+   TOPBAR
+========================= */
 
 .topbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:25px;
+    gap:20px;
+}
+
+.topbar h2{
+    font-size:40px;
+    font-weight:700;
 }
 
 .topbar-right{
-  display:flex;
-  align-items:center;
-  gap:20px;
+    display:flex;
+    align-items:center;
+    gap:18px;
 }
 
 .search-box{
-  background:white;
-  border-radius:15px;
-  padding:12px 18px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  width:350px;
+    width:340px;
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:12px 18px;
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.search-box i{
+    color:#666;
 }
 
 .search-box input{
-  border:none;
-  outline:none;
-  width:100%;
-  background:none;
+    width:100%;
+    border:none;
+    outline:none;
+    background:none;
+
+    font-size:14px;
 }
 
 .icons{
-  display:flex;
-  gap:12px;
+    display:flex;
+    align-items:center;
+    gap:12px;
 }
 
 .icons i{
-  width:42px;
-  height:42px;
-  background:#ffedf5;
-  border-radius:12px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  color:#ff4fa0;
-  cursor:pointer;
+    width:42px;
+    height:42px;
+
+    background:#ffedf5;
+
+    border-radius:12px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#ff4fa0;
+
+    cursor:pointer;
+    transition:0.3s;
 }
 
-.topbar img{
-  width:45px;
-  height:45px;
-  border-radius:50%;
+.icons i:hover{
+    background:#ff4fa0;
+    color:white;
 }
 
-/* BANNER */
+.user-profile{
+    width:45px;
+    height:45px;
+
+    border-radius:50%;
+
+    background:#f1f1f1;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-weight:600;
+    color:#555;
+}
+
+/* =========================
+   BANNER
+========================= */
 
 .banner{
-  position:relative;
-  height:180px;
-  border-radius:25px;
-  overflow:hidden;
-  margin-bottom:30px;
+    position:relative;
+
+    width:100%;
+    height:180px;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    margin-bottom:35px;
 }
 
 .banner img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
 }
 
 .banner-content{
-  position:absolute;
-  right:30px;
-  top:30px;
-  color:white;
-  text-align:right;
+    position:absolute;
+
+    right:35px;
+    top:35px;
+
+    text-align:right;
+    color:white;
 }
 
 .banner-content h2{
-  font-size:30px;
-  margin-bottom:10px;
+    font-size:28px;
+    line-height:1.4;
+
+    margin-bottom:10px;
 }
 
-/* SECTION */
+.banner-content p{
+    font-size:16px;
+}
+
+/* =========================
+   SECTION TITLE
+========================= */
 
 .section-title{
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:20px;
+}
+
+.section-title h3{
+    font-size:30px;
+    font-weight:700;
 }
 
 .section-title a{
-  text-decoration:none;
-  color:#ff4fa0;
+    text-decoration:none;
+    color:#ff4fa0;
+    font-weight:500;
 }
 
-/* CATEGORY */
+/* =========================
+   CATEGORY
+========================= */
 
 .categories{
-    display: flex;
-    gap: 20px;
-    margin-top: 20px;
+    display:flex;
+    gap:20px;
+
+    margin-bottom:40px;
 }
 
 .category{
-    width: 170px;
-    height: 90px;
-    background: #fff;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 10px;
-    text-decoration: none;
-    color: #222;
-    font-weight: 600;
-    transition: 0.3s;
+    width:170px;
+    height:90px;
+
+    background:white;
+
+    border-radius:20px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    gap:10px;
+
+    text-decoration:none;
+    color:#222;
+
+    font-weight:600;
+
+    transition:0.3s;
 }
 
 .category i{
-    color: #ff4f9a;
-    font-size: 24px;
+    font-size:24px;
+    color:#ff4fa0;
 }
 
 .category.active{
-    background: #ff4f9a;
-    color: white;
+    background:#ff4fa0;
+    color:white;
 }
 
 .category.active i{
-    color: white;
+    color:white;
 }
 
-/* FOOD */
+.category:hover{
+    transform:translateY(-3px);
+}
+
+/* =========================
+   FOOD GRID
+========================= */
 
 .food-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
 }
 
+/* =========================
+   FOOD CARD
+========================= */
+
 .food-card{
-  background:white;
-  border-radius:25px;
-  overflow:hidden;
+    background:white;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    transition:0.3s;
+
+    box-shadow:0 5px 15px rgba(0,0,0,0.05);
+}
+
+.food-card:hover{
+    transform:translateY(-5px);
 }
 
 .food-image{
-  position:relative;
-  height:180px;
+    width:100%;
+    height:220px;
+
+    position:relative;
 }
 
 .food-image img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
 }
 
 .discount{
-  position:absolute;
-  top:15px;
-  left:15px;
-  background:#ff4fa0;
-  color:white;
-  padding:6px 12px;
-  border-radius:10px;
-  font-size:12px;
+    position:absolute;
+
+    top:15px;
+    left:15px;
+
+    background:#ff4fa0;
+    color:white;
+
+    padding:7px 14px;
+
+    border-radius:12px;
+
+    font-size:12px;
+    font-weight:500;
 }
 
 .food-info{
-  padding:20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+    padding:20px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.food-info h4{
+    font-size:24px;
+    margin-bottom:8px;
+}
+
+.food-info p{
+    color:#333;
+    font-size:20px;
+    font-weight:600;
 }
 
 .food-info button{
-  width:35px;
-  height:35px;
-  border:none;
-  border-radius:10px;
-  background:#ff4fa0;
-  color:white;
-  font-size:20px;
-  cursor:pointer;
+    width:42px;
+    height:42px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#ff4fa0;
+    color:white;
+
+    font-size:22px;
+
+    cursor:pointer;
+    transition:0.3s;
 }
 
-/* RIGHTBAR */
-
-.rightbar{
-  display:flex;
-  flex-direction:column;
-  gap:20px;
+.food-info button:hover{
+    background:#ff2f88;
 }
 
-.balance-card,
-.address-card,
-.order-card{
-  background:white;
-  border-radius:25px;
-  padding:25px;
-}
-
-.balance-card{
-  background:#ff4fa0;
-  color:white;
-}
-
-.balance-buttons{
-  display:flex;
-  gap:10px;
-  margin-top:20px;
-}
-
-.balance-buttons button{
-  flex:1;
-  border:none;
-  padding:10px;
-  border-radius:10px;
-  cursor:pointer;
-}
-
-.address-card button{
-  margin-top:15px;
-  width:100%;
-  border:none;
-  padding:12px;
-  border-radius:10px;
-  background:#ff4fa0;
-  color:white;
-}
-
-.order-item{
-  display:flex;
-  gap:12px;
-  margin:20px 0;
-}
-
-.order-item img{
-  width:65px;
-  height:65px;
-  border-radius:15px;
-  object-fit:cover;
-}
-
-.total{
-  display:flex;
-  justify-content:space-between;
-  margin:20px 0;
-}
-
-.checkout{
-  width:100%;
-  border:none;
-  padding:15px;
-  border-radius:15px;
-  background:#ff4fa0;
-  color:white;
-  font-size:16px;
-  cursor:pointer;
-}
-
-/* RESPONSIVE */
+/* =========================
+   RESPONSIVE
+========================= */
 
 @media(max-width:1200px){
 
-  .dashboard{
-    grid-template-columns:1fr;
-  }
-
-  .categories{
-    grid-template-columns:repeat(3,1fr);
-  }
-
-  .food-grid{
-    grid-template-columns:1fr;
-  }
+    .food-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
 
 }
-/* =========================
-   USER PROFILE BULATAN
-========================= */
 
-.user-profile{
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  background: #e5e5e5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
-  font-size: 18px;
-  color: #555;
-  cursor: pointer;
+@media(max-width:992px){
+
+    .dashboard{
+        grid-template-columns:1fr;
+    }
+
+    .sidebar{
+        position:relative;
+        height:auto;
+    }
+
+    .topbar{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .topbar-right{
+        width:100%;
+        flex-wrap:wrap;
+    }
+
+    .search-box{
+        width:100%;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .food-grid{
+        grid-template-columns:1fr;
+    }
+
+    .categories{
+        flex-wrap:wrap;
+    }
+
+    .category{
+        width:100%;
+    }
+
+    .banner{
+        height:220px;
+    }
+
+    .banner-content{
+        right:20px;
+        top:20px;
+    }
+
+    .banner-content h2{
+        font-size:22px;
+    }
+
 }

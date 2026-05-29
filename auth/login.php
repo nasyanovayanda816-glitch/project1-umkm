@@ -54,6 +54,7 @@ if (isset($_POST['login'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - FlavorVibe</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         /* Gaya CSS sama persis dengan register agar seragam */
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fafafa; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
@@ -69,6 +70,22 @@ if (isset($_POST['login'])) {
         .auth-link { text-align: center; margin-top: 20px; font-size: 14px; }
         .auth-link a { color: #f26b7a; text-decoration: none; font-weight: 600; }
         .alert-error { background-color: #ffebee; color: #c62828; padding: 10px; border-radius: 6px; margin-bottom: 15px; font-size: 14px; border: 1px solid #ffcdd2; text-align: center; }
+        .password-box{
+            position: relative;
+        }
+
+        .password-box input{
+            padding-right: 45px;
+        }
+
+        .password-box i{
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #777;
+        }
     </style>
 </head>
 <body>
@@ -88,7 +105,20 @@ if (isset($_POST['login'])) {
             </div>
             <div class="form-group">
                 <label>Password</label>
-                <input type="password" name="password" required placeholder="Masukkan password Anda">
+
+                <div class="password-box">
+
+                    <input 
+                        type="password" 
+                        name="password" 
+                        id="password"
+                        required 
+                        placeholder="Masukkan password Anda"
+                    >
+
+                    <i class="fa-solid fa-eye" id="togglePassword"></i>
+
+                </div>
             </div>
             <button type="submit" name="login" class="btn-submit">Masuk</button>
         </form>
@@ -98,5 +128,29 @@ if (isset($_POST['login'])) {
         </div>
     </div>
 
+    <script>
+
+        const togglePassword = document.getElementById('togglePassword');
+        const password = document.getElementById('password');
+
+        togglePassword.addEventListener('click', function () {
+
+            if(password.type === 'password'){
+
+                password.type = 'text';
+                this.classList.remove('fa-eye');
+                this.classList.add('fa-eye-slash');
+
+            } else {
+
+                password.type = 'password';
+                this.classList.remove('fa-eye-slash');
+                this.classList.add('fa-eye');
+
+            }
+
+        });
+
+</script>
 </body>
 </html>

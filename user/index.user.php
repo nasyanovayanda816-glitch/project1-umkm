@@ -66,24 +66,6 @@ $queryProduk = mysqli_query($conn, $query);
         NAVBAR
 ========================= -->
 
-<nav class="top-navbar">
-
-    <div class="nav-logo">
-        FlavorVibe.
-    </div>
-
-    <ul class="nav-menu">
-
-        
-        <li><a href="../index.php">Beranda</a></li>
-        <li><a href="../catalog.php">Catalog</a></li>
-        <li><a href="#">Tentang Kami</a></li>
-        <li><a href="../auth/logout.php">Logout</a></li>
-
-    </ul>
-
-</nav>
-
 <div class="dashboard">
 
     <!-- =========================
@@ -98,56 +80,63 @@ $queryProduk = mysqli_query($conn, $query);
 
         <ul class="menu">
 
-            <li class="active">
-                <a href="index.user.php">
-                    <i class="fa-solid fa-house"></i>
-                    Produk
-                </a>
-            </li>
+    <li class="<?= basename($_SERVER['PHP_SELF']) == 'index.user.php' ? 'active' : ''; ?>">
+        <a href="index.user.php">
+            <i class="fa-solid fa-house"></i>
+            Produk
+        </a>
+    </li>
 
-            <li>
-                <a href="pesanan.php">
-                    <i class="fa-solid fa-bag-shopping"></i>
-                    Pesanan
-                </a>
-            </li>
+    <li class="<?= basename($_SERVER['PHP_SELF']) == 'pesanan.php' ? 'active' : ''; ?>">
+        <a href="pesanan.php">
+            <i class="fa-solid fa-bag-shopping"></i>
+            Pesanan
+        </a>
+    </li>
 
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-heart"></i>
-                    Favorit
-                </a>
-            </li>
+    <li class="<?= basename($_SERVER['PHP_SELF']) == 'favorit.php' ? 'active' : ''; ?>">
+        <a href="#">
+            <i class="fa-solid fa-heart"></i>
+            Favorit
+        </a>
+    </li>
 
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-message"></i>
-                    Chat
-                </a>
-            </li>
+    <li class="<?= basename($_SERVER['PHP_SELF']) == 'chat.php' ? 'active' : ''; ?>">
+        <a href="#">
+            <i class="fa-solid fa-message"></i>
+            Chat
+        </a>
+    </li>
 
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-clock-rotate-left"></i>
-                    Riwayat
-                </a>
-            </li>
+    <li class="<?= basename($_SERVER['PHP_SELF']) == 'riwayat.php' ? 'active' : ''; ?>">
+        <a href="#">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            Riwayat
+        </a>
+    </li>
 
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-wallet"></i>
-                    Pembayaran
-                </a>
-            </li>
+    <li class="<?= basename($_SERVER['PHP_SELF']) == 'pembayaran.php' ? 'active' : ''; ?>">
+        <a href="pembayaran.php">
+            <i class="fa-solid fa-wallet"></i>
+            Pembayaran
+        </a>
+    </li>
 
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-gear"></i>
-                    Pengaturan
-                </a>
-            </li>
+    <li class="<?= basename($_SERVER['PHP_SELF']) == 'pengaturan.php' ? 'active' : ''; ?>">
+        <a href="#">
+            <i class="fa-solid fa-gear"></i>
+            Pengaturan
+        </a>
+    </li>
+    <li class="<?= basename($_SERVER['PHP_SELF']) == 'logout.php' ? 'active' : ''; ?>">
+        <a href="../auth/logout.php">
+            <i class="fa-solid fa-right-from-bracket"></i>
+        Keluar
+        </a>
+    </li>
 
-        </ul>
+
+</ul>
 
     </aside>
 
@@ -181,8 +170,8 @@ $queryProduk = mysqli_query($conn, $query);
                 <div class="icons">
 
                     <i class="fa-regular fa-bell"></i>
-                    <i class="fa-regular fa-envelope"></i>
-                    <i class="fa-regular fa-heart"></i>
+                
+                    
 
                 </div>
 

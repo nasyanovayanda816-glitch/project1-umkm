@@ -471,6 +471,137 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="kontak.css">
+<section class="contact-section" id="kontak">
+
+    <div class="contact-container">
+
+        <!-- LEFT -->
+
+        <div class="contact-left">
+
+            <iframe
+            src="https://www.google.com/maps?q=Majalengka&output=embed">
+            </iframe>
+
+        </div>
+
+        <!-- RIGHT -->
+
+        <div class="contact-right">
+
+            <div class="small-title">
+                ❀ Hubungi Kami ❀
+            </div>
+
+            <h1 class="contact-title">
+                Informasi Kontak
+            </h1>
+
+            <p class="contact-desc">
+                Jika Anda memiliki pertanyaan,
+                jangan ragu untuk menghubungi kami.
+            </p>
+
+            <div class="contact-box">
+                <i class="fa-solid fa-user"></i>
+                <span>JajananGenz Catering</span>
+            </div>
+
+            <div class="contact-box">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Majalengka, Jawa Barat</span>
+            </div>
+
+            <div class="contact-box">
+                <i class="fa-solid fa-envelope"></i>
+                <span>jajanangenz@gmail.com</span>
+            </div>
+
+            <div class="contact-box">
+                <i class="fa-brands fa-instagram"></i>
+                <span>@nasyanynda</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="footer-container">
+
+        <div>
+
+            <div class="footer-logo">
+                Jajanan<span>Genz.</span>
+            </div>
+
+            <p class="footer-text">
+                Catering premium untuk berbagai acara spesial Anda.
+            </p>
+
+        </div>
+
+        <div>
+
+            <h3 class="footer-title">
+                ALAMAT
+            </h3>
+
+            <div class="footer-contact">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Majalengka, Jawa Barat</span>
+            </div>
+
+            <div class="footer-contact">
+                <i class="fa-solid fa-envelope"></i>
+                <span>jajanangenz@gmail.com</span>
+            </div>
+
+        </div>
+
+        <div>
+
+            <h3 class="footer-title">
+                SOCIAL MEDIA
+            </h3>
+
+            <div class="social-icons">
+
+                <a href="#">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2025 JajananGenz Catering. All Rights Reserved.
+    </div>
+
+</footer>
+
+</body>
+</html>
+```
 
 </head>
 </html>

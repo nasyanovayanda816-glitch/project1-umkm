@@ -34,22 +34,6 @@ $nama = $_SESSION['nama'];
 <body>
 
 <!-- NAVBAR -->
-<nav class="top-navbar">
-
-    <div class="nav-logo">
-        FlavorVibe.
-    </div>
-
-    <ul class="nav-menu">
-        <li><a href="../index.php">Beranda</a></li>
-        <li><a href="index.user.php">Catalog</a></li>
-        <li><a href="../index.php#about">Tentang Kami</a></li>
-        <li><a href="../auth/logout.php">Logout</a></li>
-
-
-    </ul>
-
-</nav>
 
 <!-- CONTAINER -->
 <div class="orders-container">
@@ -65,56 +49,62 @@ $nama = $_SESSION['nama'];
 
         <ul class="menu">
 
-            <li class="active">
-                <a href="index.user.php">
-                    <i class="fa-solid fa-house"></i>
-                    Produk
-                </a>
-            </li>
+    <li class="<?= basename($_SERVER['PHP_SELF']) == 'index.user.php' ? 'active' : ''; ?>">
+        <a href="index.user.php">
+            <i class="fa-solid fa-house"></i>
+            Produk
+        </a>
+    </li>
 
-            <li>
-                <a href="pesanan.php">
-                    <i class="fa-solid fa-bag-shopping"></i>
-                    Pesanan
-                </a>
-            </li>
+    <li class="<?= basename($_SERVER['PHP_SELF']) == 'pesanan.php' ? 'active' : ''; ?>">
+        <a href="pesanan.php">
+            <i class="fa-solid fa-bag-shopping"></i>
+            Pesanan
+        </a>
+    </li>
 
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-heart"></i>
-                    Favorit
-                </a>
-            </li>
+    <li class="<?= basename($_SERVER['PHP_SELF']) == 'favorit.php' ? 'active' : ''; ?>">
+        <a href="#">
+            <i class="fa-solid fa-heart"></i>
+            Favorit
+        </a>
+    </li>
 
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-message"></i>
-                    Chat
-                </a>
-            </li>
+    <li class="<?= basename($_SERVER['PHP_SELF']) == 'chat.php' ? 'active' : ''; ?>">
+        <a href="#">
+            <i class="fa-solid fa-message"></i>
+            Chat
+        </a>
+    </li>
 
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-clock-rotate-left"></i>
-                    Riwayat
-                </a>
-            </li>
+    <li class="<?= basename($_SERVER['PHP_SELF']) == 'riwayat.php' ? 'active' : ''; ?>">
+        <a href="#">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            Riwayat
+        </a>
+    </li>
 
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-wallet"></i>
-                    Pembayaran
-                </a>
-            </li>
+    <li class="<?= basename($_SERVER['PHP_SELF']) == 'pembayaran.php' ? 'active' : ''; ?>">
+        <a href="pembayaran.php">
+            <i class="fa-solid fa-wallet"></i>
+            Pembayaran
+        </a>
+    </li>
 
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-gear"></i>
-                    Pengaturan
-                </a>
-            </li>
+    <li class="<?= basename($_SERVER['PHP_SELF']) == 'pengaturan.php' ? 'active' : ''; ?>">
+        <a href="#">
+            <i class="fa-solid fa-gear"></i>
+            Pengaturan
+        </a>
+    </li>
+    <li class="<?= basename($_SERVER['PHP_SELF']) == 'logout.php' ? 'active' : ''; ?>">
+        <a href="../auth/logout.php">
+            <i class="fa-solid fa-right-from-bracket"></i>
+        Keluar
+        </a>
+    </li>
 
-        </ul>
+</ul>
 
     </aside>
 
@@ -122,10 +112,11 @@ $nama = $_SESSION['nama'];
             MAIN CONTENT
     ========================= -->
 
+
+    <!-- MAIN -->
     <main class="main-content">
 
-        <!-- TOPBAR -->
-
+        <!-- HEADER -->
         <div class="topbar">
 
             <div>
@@ -148,38 +139,14 @@ $nama = $_SESSION['nama'];
                 <div class="icons">
 
                     <i class="fa-regular fa-bell"></i>
-                    <i class="fa-regular fa-envelope"></i>
-                    <i class="fa-regular fa-heart"></i>
+                
+                    
 
                 </div>
 
                 <div class="profile-icon">
                     <i class="fa-solid fa-user"></i>
                 </div>
-
-            </div>
-
-        </div>
-
-    <!-- MAIN -->
-    <main class="main-content">
-
-        <!-- HEADER -->
-        <div class="page-header">
-
-            <div>
-
-                <h1>Halo, <?php echo $nama; ?> 👋</h1>
-
-                <p>Pantau jadwal catering dan status pesanan kamu</p>
-
-            </div>
-
-            <div class="search-box">
-
-                <i class="fa-solid fa-magnifying-glass"></i>
-
-                <input type="text" placeholder="Cari pesanan...">
 
             </div>
 
@@ -306,26 +273,7 @@ $nama = $_SESSION['nama'];
 
             </div>
 
-            <div class="nota-item">
-                <span>Pesanan</span>
-                <strong>Paket Catering Premium</strong>
-            </div>
-
-            <div class="nota-item">
-                <span>Total</span>
-                <strong>Rp 250.000</strong>
-            </div>
-
-            <div class="nota-item">
-                <span>Status</span>
-                <strong class="paid">Sudah Dibayar</strong>
-            </div>
-
-            <div class="nota-item">
-                <span>Tanggal Ambil</span>
-                <strong id="tanggalAmbil">-</strong>
-            </div>
-
+            
         </div>
 
         <!-- PESANAN -->
@@ -339,60 +287,7 @@ $nama = $_SESSION['nama'];
 
             </div>
 
-            <div class="order-items">
-
-                <div class="order-card">
-
-                    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=1000">
-
-                    <div class="order-info">
-
-                        <h3>Paket Ulang Tahun</h3>
-
-                        <p>20 Pax • Nasi Box Premium</p>
-
-                    </div>
-
-                    <div class="order-price">
-                        Rp 550.000
-                    </div>
-
-                    <div class="order-status success">
-                        Lunas
-                    </div>
-
-                </div>
-
-                <div class="order-card">
-
-                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1000">
-
-                    <div class="order-info">
-
-                        <h3>Paket Meeting Kantor</h3>
-
-                        <p>15 Pax • Snack Box</p>
-
-                    </div>
-
-                    <div class="order-price">
-                        Rp 320.000
-                    </div>
-
-                    <div class="order-status pending">
-                        Pending
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </main>
-
-</div>
-
+        
 <script>
 
 const monthYear = document.getElementById("monthYear");

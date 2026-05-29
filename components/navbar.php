@@ -1,5 +1,3 @@
-
-
 <?php 
 // Memastikan session berjalan agar bisa mengecek status login
 if (session_status() === PHP_SESSION_NONE) {
@@ -16,7 +14,7 @@ if (session_status() === PHP_SESSION_NONE) {
   <ul class="nav-links">
 
     <li><a href="index.php">Beranda</a></li>
-    <li><a href="#catalog">Catalog</a></li>
+    <li><a href="#Catalog">Catalog</a></li>
     <li><a href="index.php#about">Tentang Kami</a></li>
     
     
